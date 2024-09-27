@@ -1,14 +1,22 @@
-﻿
-Lector lector = new Lector();
+﻿Lector lector = new Lector();
 
-Student student = new Student();
+Student student_one = new Student();
+Student student_two = new Student();
+
+Notebook notebook_one = new Notebook();
+Notebook notebook_two = new Notebook();
+
+student_one.AddNotebook(notebook_one);
+student_two.AddNotebook(notebook_two);
 
 Room room = new Room();
 
 room.Enter(lector);
-room.Enter(student);
+room.Enter(student_one);
+room.Enter(student_two);
 
 lector.Say(room, "Добрый день!");
+
 
 
 public interface IListener
@@ -18,54 +26,65 @@ public interface IListener
 
 public class Room
 {
+    List<IListener> listeners = new List<IListener>();
     public void Echo(string sound)
     {
-
+        foreach (IListener listener in listeners)
+        {
+            listener.Listen(sound);
+        }
     }
 
-    public void Enter(IListener listener) { }
+    public void Enter(IListener listener)
+    {
+        listeners.Add(listener);
+    }
 }
 
 public class Lector : IListener
 {
-    public IListener Listener
-    {
-        
-    }
-
     public void Listen(string sound)
     {
-        //Console.WriteLine(sound);
+        Console.WriteLine($"Lictor heard: {sound}");
     }
 
     public void Say(Room room, string speech)
     {
+        Console.WriteLine($"Lector say: {speech}");
         room.Echo(speech);
     }
 }
 
 public class Student : IListener
 {
-    public Lector Lector
-    {
-        
-    }
-
+    string sound = "";
+    Notebook? notebook;
     public void Listen(string sound)
     {
-        // нужен объект студента
+        this.sound = sound;
+        if (notebook is not null)
+        {
+            this.Write(notebook);
+        }
+    }
+
+    public void AddNotebook(Notebook notebook)
+    {
+        this.notebook = notebook;
     }
 
     protected void Write(Notebook notebook)
     {
-        notebook.Write();
+        notebook.Write(sound);
     }
 }
 
 public class Notebook
 {
-    public void Write()
+    List<string> records = new List<string>();
+    public void Write(string sound)
     {
-        Console.WriteLine("Write in notebook");
+        Console.WriteLine($"Student write {sound} in notebook");
+        records.Add(sound);
     }
 }
