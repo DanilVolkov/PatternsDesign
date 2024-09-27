@@ -7,6 +7,10 @@ txt.Print(new PrinterDefault());
 
 txt.Print(new PrinterSpecial());
 
+PrinterDelegate delegatePrinter = new PrinterDelegate();
+delegatePrinter.Assign(txt);
+delegatePrinter.Print("Непосредственная печать делегатом:");
+
 interface IPrinter
 {
     void Print(Object message);
@@ -86,6 +90,24 @@ class PrinterSpecial : PrinterDefault
 
 interface IPrinterDelegate : IPrinter
 {
+    void Assign(IPrintable printable);
+}
 
+class PrinterDelegate : IPrinterDelegate
+{
+    private IPrintable delegatee;
+
+    // Назначение поручителя
+    public void Assign(IPrintable printable)
+    {
+        delegatee = printable;
+    }
+
+    // Реализация метода печати
+    public void Print(Object message)
+    {
+        Console.Write("PrinterDelegate: ");
+        delegatee?.Print(new PrinterDefault());
+    }
 }
 
