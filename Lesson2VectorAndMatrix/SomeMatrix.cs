@@ -1,9 +1,9 @@
 ﻿namespace Lesson2VectorAndMatrix
 {
-    abstract class SomeMatrix : IMatrix
+    abstract class SomeMatrix<T> : IMatrix
     {
 
-        private List<int> matrix;
+        private Dictionary<Tuple<int, int>, T> matrix;
 
         public int CountRows
         {
@@ -13,32 +13,10 @@
             }
         }
 
-        public int CountColumns
-        {
-            get
-            {
-                return matrix[0]; 
-            }
-        }
+        public abstract int? CountColumns{ get; }
 
-        public void AddItem(int row, int column, int value)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void AddItem(int row, int column, int value);
 
-        public void AddRow(IVector vector)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddRows(List<IVector> vectors)
-        {
-            throw new NotImplementedException();
-        }
-
-        public object GetItem(int row, int column)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract object GetItem(int row, int column);
     }
 }

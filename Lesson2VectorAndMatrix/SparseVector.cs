@@ -6,20 +6,23 @@ namespace Lesson2VectorAndMatrix
     {
         private Dictionary<int, int> vector;
 
+        private int countElements;
+
         public int Length
         {
             get
             {
-                return vector.Count;
+                return countElements;
             }
         }
-        public SparseVector()
+        public SparseVector(int count)
         {
             vector = new Dictionary<int, int>();
+            countElements = count;
         }
         public SparseVector(int[] array)
         {
-
+            countElements = array.Length;
             vector = new Dictionary<int, int>();
             for (int i = 0; i < array.Length; i++)
             {
@@ -32,7 +35,7 @@ namespace Lesson2VectorAndMatrix
 
         public SparseVector(List<int> list)
         {
-
+            countElements = list.Count;
             vector = new Dictionary<int, int>();
             for (int i = 0; i < list.Count; i++)
             {
@@ -56,6 +59,10 @@ namespace Lesson2VectorAndMatrix
             if (vector.ContainsKey(index))
             {
                 return vector[index];
+            }
+            else if (index >= 0 && index < this.Length)
+            {
+                return 0;
             }
             else
             {

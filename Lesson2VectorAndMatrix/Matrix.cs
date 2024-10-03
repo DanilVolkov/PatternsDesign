@@ -6,8 +6,18 @@ using System.Threading.Tasks;
 
 namespace Lesson2VectorAndMatrix
 {
-    class Matrix : SomeMatrix
+    class Matrix : SomeMatrix<Vector>
     {
-        
+        public override int? CountColumns => throw new NotImplementedException();
+
+        public override void AddItem(int row, int column, int value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object GetItem(int row, int column)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

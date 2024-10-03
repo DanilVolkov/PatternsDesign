@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace Lesson2VectorAndMatrix
 {
-    class SparseMatrix : SomeMatrix
+    class SparseMatrix : SomeMatrix<SparseVector>
     {
+        public override int? CountColumns => throw new NotImplementedException();
+
+        public override void AddItem(int row, int column, int value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object GetItem(int row, int column)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
