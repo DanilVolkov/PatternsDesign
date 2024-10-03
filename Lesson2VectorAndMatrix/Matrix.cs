@@ -8,5 +8,6 @@ namespace Lesson2VectorAndMatrix
 {
     class Matrix : SomeMatrix
     {
+        
     }
 }

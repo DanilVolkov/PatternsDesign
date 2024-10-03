@@ -3,7 +3,7 @@
     abstract class SomeMatrix : IMatrix
     {
 
-        private List<IVector>? matrix;
+        private List<int> matrix;
 
         public int CountRows
         {
@@ -17,31 +17,21 @@
         {
             get
             {
-                return matrix[0].Count; // TODO: добавить получение размерностей всех векторов и отдельный метод для получения размерности отдельной строки
+                return matrix[0]; 
             }
         }
 
-        public void AddColumn()
+        public void AddItem(int row, int column, int value)
         {
             throw new NotImplementedException();
         }
 
-        public void AddColumns(int count)
+        public void AddRow(IVector vector)
         {
             throw new NotImplementedException();
         }
 
-        public void AddItem(int value)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddRow()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddRows(int count)
+        public void AddRows(List<IVector> vectors)
         {
             throw new NotImplementedException();
         }

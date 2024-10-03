@@ -1,51 +1,65 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Lesson2VectorAndMatrix
 {
     class SparseVector : IVector
     {
-        private List<int> vector;
+        private Dictionary<int, int> vector;
 
-        public int Count
+        public int Length
         {
             get
             {
                 return vector.Count;
             }
         }
-
         public SparseVector()
         {
-            vector = new List<int>();
+            vector = new Dictionary<int, int>();
+        }
+        public SparseVector(int[] array)
+        {
+
+            vector = new Dictionary<int, int>();
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] != 0)
+                {
+                    vector.Add(i, array[i]);
+                }
+            }
         }
 
-        public SparseVector(int count)
-        {
-            vector = new List<int>(Enumerable.Range(0, count).Select(x => 0));
-        }
         public SparseVector(List<int> list)
         {
-            vector = new List<int>(list);
+
+            vector = new Dictionary<int, int>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i] != 0)
+                {
+                    vector.Add(i, list[i]);
+                }
+            }
         }
 
-        public void Add(int value)
+        public void SetItem(int index, int value)
         {
-            vector.Add(value);
+            if (!vector.ContainsKey(index))
+            {
+                vector.Add(index, value);
+            }
         }
 
-        public object Get(int index)
+        public int? GetItem(int index)
         {
-            if (index >= 0 && index < vector.Count)
+            if (vector.ContainsKey(index))
             {
                 return vector[index];
             }
             else
             {
-                return $"{index} was out of range. Must be non-negative and less than {vector.Count}.";
+                return null;
             }
 
         }

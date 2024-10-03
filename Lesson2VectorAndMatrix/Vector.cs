@@ -2,39 +2,57 @@
 {
     class Vector : IVector
     {
-        private List<int> vector;
+        private int[] vector;
 
-        public int Count
+        public int Length
         {
             get
             {
-                return vector.Count;
+                return vector.Length;
             }
         }
-        public Vector()
+        public Vector(int length)
         {
-            vector = new List<int>();
+            vector = new int[length];
         }
-        public Vector(List<int> list)
+        public Vector(int[] array)
         {
-            vector = new List<int>(list);
+
+            vector = new int[array.Length];
+            Array.Copy(array, 0, vector, 0, array.Length);
         }
 
-        public void Add(int value)
+        public void SetItem(int index, int value)
         {
-            vector.Add(value);
+            try
+            {
+                vector[index] = value;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                Console.WriteLine($"{index} was out of range. Must be non-negative and less than {vector.Length}.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
-        public object Get(int index)
+        public int? GetItem(int index)
         {
-            if (index >= 0 && index < vector.Count)
+            try
             {
                 return vector[index];
             }
-            else
+            catch (IndexOutOfRangeException)
             {
-                return $"{index} was out of range. Must be non-negative and less than {vector.Count}.";
+                Console.WriteLine($"{index} was out of range. Must be non-negative and less than {vector.Length}.");
             }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return null;
             
         }
     }

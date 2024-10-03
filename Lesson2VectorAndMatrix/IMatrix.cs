@@ -7,15 +7,11 @@
 
         public int CountColumns { get; }
 
-        void AddItem(int value);
+        void AddItem(int row, int column, int value);
 
-        void AddColumn();
+        void AddRow(IVector vector);
 
-        void AddColumns(int count);
-
-        void AddRow();
-
-        void AddRows(int count);
+        void AddRows(List<IVector> vectors);
 
         object GetItem(int row, int column);
     }

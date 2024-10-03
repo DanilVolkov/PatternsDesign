@@ -2,9 +2,10 @@
 {
     interface IVector
     {
-        public int Count { get; }
-        void Add(int value);
+        public int Length { get; }
 
-        object Get(int index);
+        void SetItem(int index, int value);
+
+        int? GetItem(int index);
     }
 }
