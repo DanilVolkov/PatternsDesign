@@ -1,15 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lesson2VectorAndMatrix
+﻿namespace Lesson2VectorAndMatrix
 {
     abstract class SomeMatrix : IMatrix
     {
 
-        private object? matrix;
+        private List<IVector>? matrix;
+
+        public int CountRows
+        {
+            get
+            {
+                return matrix.Count;
+            }
+        }
+
+        public int CountColumns
+        {
+            get
+            {
+                return matrix[0].Count; // TODO: добавить получение размерностей всех векторов и отдельный метод для получения размерности отдельной строки
+            }
+        }
+
         public void AddColumn()
         {
             throw new NotImplementedException();
@@ -20,7 +31,7 @@ namespace Lesson2VectorAndMatrix
             throw new NotImplementedException();
         }
 
-        public void AddItem(object value)
+        public void AddItem(int value)
         {
             throw new NotImplementedException();
         }
@@ -31,16 +42,6 @@ namespace Lesson2VectorAndMatrix
         }
 
         public void AddRows(int count)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int CountColumns()
-        {
-            throw new NotImplementedException();
-        }
-
-        public int CountRows()
         {
             throw new NotImplementedException();
         }

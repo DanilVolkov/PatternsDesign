@@ -8,19 +8,46 @@ namespace Lesson2VectorAndMatrix
 {
     class SparseVector : IVector
     {
-        public void Add(object value)
+        private List<int> vector;
+
+        public int Count
         {
-            throw new NotImplementedException();
+            get
+            {
+                return vector.Count;
+            }
         }
 
-        public int Count()
+        public SparseVector()
         {
-            throw new NotImplementedException();
+            vector = new List<int>();
+        }
+
+        public SparseVector(int count)
+        {
+            vector = new List<int>(Enumerable.Range(0, count).Select(x => 0));
+        }
+        public SparseVector(List<int> list)
+        {
+            vector = new List<int>(list);
+        }
+
+        public void Add(int value)
+        {
+            vector.Add(value);
         }
 
         public object Get(int index)
         {
-            throw new NotImplementedException();
+            if (index >= 0 && index < vector.Count)
+            {
+                return vector[index];
+            }
+            else
+            {
+                return $"{index} was out of range. Must be non-negative and less than {vector.Count}.";
+            }
+
         }
     }
 }

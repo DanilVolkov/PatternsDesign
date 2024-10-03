@@ -1,26 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lesson2VectorAndMatrix
+﻿namespace Lesson2VectorAndMatrix
 {
     class Vector : IVector
     {
-        public void Add(object value)
+        private List<int> vector;
+
+        public int Count
         {
-            throw new NotImplementedException();
+            get
+            {
+                return vector.Count;
+            }
+        }
+        public Vector()
+        {
+            vector = new List<int>();
+        }
+        public Vector(List<int> list)
+        {
+            vector = new List<int>(list);
         }
 
-        public int Count()
+        public void Add(int value)
         {
-            throw new NotImplementedException();
+            vector.Add(value);
         }
 
         public object Get(int index)
         {
-            throw new NotImplementedException();
+            if (index >= 0 && index < vector.Count)
+            {
+                return vector[index];
+            }
+            else
+            {
+                return $"{index} was out of range. Must be non-negative and less than {vector.Count}.";
+            }
+            
         }
     }
 }

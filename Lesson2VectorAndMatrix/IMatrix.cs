@@ -2,7 +2,12 @@
 {
     interface IMatrix
     {
-        void AddItem(object value);
+
+        public int CountRows { get; }
+
+        public int CountColumns { get; }
+
+        void AddItem(int value);
 
         void AddColumn();
 
@@ -13,9 +18,5 @@
         void AddRows(int count);
 
         object GetItem(int row, int column);
-
-        int CountRows();
-
-        int CountColumns();
     }
 }
