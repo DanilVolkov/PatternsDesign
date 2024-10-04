@@ -35,7 +35,7 @@
             }
         }
 
-        public object GetItem(int row, int column)
+        public int GetItem(int row, int column)
         {
             try
             {

@@ -9,6 +9,6 @@
 
         void SetItem(int row, int column, int value);
 
-        object GetItem(int row, int column);
+        int GetItem(int row, int column);
     }
 }
