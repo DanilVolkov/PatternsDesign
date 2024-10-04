@@ -2,12 +2,54 @@
 {
     abstract class SomeMatrix : IMatrix
     {
-        public abstract int CountRows { get; }
+        protected Dictionary<int, dynamic> matrix;
+        public int? CountColumns
+        {
+            get
+            {
+                return matrix.Count;
+            }
+        }
 
-        public abstract int? CountColumns{ get; }
+        public int CountRows
+        {
+            get
+            {
+                return matrix[0].Length;
+            }
+        }
 
-        public abstract void SetItem(int row, int column, int value);
+        public void SetItem(int row, int column, int value)
+        {
+            try
+            {
+                matrix[row].SetItem(column, value);
+            }
+            catch (KeyNotFoundException)
+            {
+                throw new Exception($"{row} was out of range. Must be non-negative and less than {this.CountRows}.");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
 
-        public abstract object GetItem(int row, int column);
+        public object GetItem(int row, int column)
+        {
+            try
+            {
+                return matrix[row].GetItem(column);
+            }
+            catch (KeyNotFoundException)
+            {
+                throw new Exception($"{row} was out of range. Must be non-negative and less than {row}.");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+        }
     }
 }
+

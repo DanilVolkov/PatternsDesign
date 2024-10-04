@@ -30,11 +30,11 @@
             }
             catch (IndexOutOfRangeException)
             {
-                Console.WriteLine($"{index} was out of range. Must be non-negative and less than {vector.Length}.");
+                throw new Exception($"{index} was out of range. Must be non-negative and less than {vector.Length}.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                throw new Exception(ex.ToString());
             }
         }
 
@@ -46,13 +46,12 @@
             }
             catch (IndexOutOfRangeException)
             {
-                Console.WriteLine($"{index} was out of range. Must be non-negative and less than {vector.Length}.");
+                throw new Exception($"{index} was out of range. Must be non-negative and less than {vector.Length}.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                throw new Exception(ex.ToString());
             }
-            return 0;
         }
 
         public Vector Copy(Vector old_vector)

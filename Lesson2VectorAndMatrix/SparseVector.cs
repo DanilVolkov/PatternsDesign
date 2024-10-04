@@ -52,6 +52,10 @@ namespace Lesson2VectorAndMatrix
             {
                 vector.Add(index, value);
             }
+            else
+            {
+                vector[index] = value;
+            }
         }
 
         public int GetItem(int index)
@@ -68,13 +72,12 @@ namespace Lesson2VectorAndMatrix
             }
             catch (KeyNotFoundException)
             {
-                Console.WriteLine($"{index} was out of range. Must be non-negative and less than {this.Length}.");
+                throw new Exception($"{index} was out of range. Must be non-negative and less than {this.Length}.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                throw new Exception(ex.ToString());
             }
-            return 0;
         }
 
         public SparseVector Copy(SparseVector old_vector)

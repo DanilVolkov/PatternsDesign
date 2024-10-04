@@ -41,7 +41,15 @@ Console.WriteLine();
 Console.WriteLine("Matrix");
 
 Matrix matrix = new Matrix(3, 2);
-Console.WriteLine(matrix.GetItem(4, 1));
+try
+{
+    Console.WriteLine(matrix.GetItem(4, 1));
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
 
 List<Vector> vector_1 = new List<Vector>() { new Vector(3), new Vector(3), new Vector(3) };
 
@@ -64,6 +72,49 @@ for (int i = 0; i < matrix_1.CountRows; i++)
     }
     Console.WriteLine();
 }
+
+Console.WriteLine();
+Console.WriteLine("SparseMatrix");
+
+
+SparseMatrix sparseMatrix = new SparseMatrix(3, 2);
+Console.WriteLine(sparseMatrix.GetItem(2, 1));
+
+try
+{
+    Console.WriteLine(sparseMatrix.GetItem(4, 1));
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+Console.WriteLine();
+
+List<SparseVector> sparseVector1 = new List<SparseVector>() { new SparseVector(3), new SparseVector(3), new SparseVector(3) };
+
+SparseMatrix sparseMatrix1 = new SparseMatrix(sparseVector1);
+
+sparseMatrix1.SetItem(1, 2, 19);
+sparseMatrix1.SetItem(2, 1, 5);
+sparseMatrix1.SetItem(0, 0, 3);
+sparseMatrix1.SetItem(0, 2, 100);
+sparseMatrix1.SetItem(1, 1, 78);
+sparseMatrix1.SetItem(2, 1, 34);
+sparseMatrix1.SetItem(2, 2, 54);
+sparseMatrix1.SetItem(2, 0, 93);
+
+for (int i = 0; i < sparseMatrix1.CountRows; i++)
+{
+    for (int j = 0; j < sparseMatrix1.CountColumns; j++)
+    {
+        Console.Write($"{sparseMatrix1.GetItem(i, j)} ");
+    }
+    Console.WriteLine();
+}
+
+
+
 
 
 
