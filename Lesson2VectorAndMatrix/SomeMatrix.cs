@@ -3,7 +3,7 @@
     abstract class SomeMatrix : IMatrix
     {
         protected Dictionary<int, dynamic> matrix;
-        public int? CountColumns
+        public int CountColumns
         {
             get
             {

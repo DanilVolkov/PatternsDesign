@@ -1,5 +1,4 @@
 ﻿using Lesson2VectorAndMatrix;
-using System.Runtime.ExceptionServices;
 
 Console.WriteLine("Vector");
 
@@ -109,6 +108,32 @@ for (int i = 0; i < sparseMatrix1.CountRows; i++)
     for (int j = 0; j < sparseMatrix1.CountColumns; j++)
     {
         Console.Write($"{sparseMatrix1.GetItem(i, j)} ");
+    }
+    Console.WriteLine();
+}
+
+Console.WriteLine();
+Console.WriteLine("InitMatrix");
+matrix = new Matrix(3, 3);
+InitMatrix.FillMatrix(matrix, 5, 10);
+for (int i = 0; i < matrix.CountRows; i++)
+{
+    for (int j = 0; j < matrix.CountColumns; j++)
+    {
+        Console.Write($"{matrix.GetItem(i, j)} ");
+    }
+    Console.WriteLine();
+}
+
+Console.WriteLine();
+Console.WriteLine("InitSparseMatrix");
+sparseMatrix = new SparseMatrix(3, 3);
+InitMatrix.FillMatrix(sparseMatrix, 5, 10);
+for (int i = 0; i < sparseMatrix.CountRows; i++)
+{
+    for (int j = 0; j < sparseMatrix.CountColumns; j++)
+    {
+        Console.Write($"{sparseMatrix.GetItem(i, j)} ");
     }
     Console.WriteLine();
 }

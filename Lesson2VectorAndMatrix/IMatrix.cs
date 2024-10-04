@@ -5,7 +5,7 @@
 
         public int CountRows { get; }
 
-        public int? CountColumns { get; }
+        public int CountColumns { get; }
 
         void SetItem(int row, int column, int value);
 
