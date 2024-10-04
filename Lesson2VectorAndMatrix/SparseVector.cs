@@ -54,21 +54,37 @@ namespace Lesson2VectorAndMatrix
             }
         }
 
-        public int? GetItem(int index)
+        public int GetItem(int index)
         {
-            if (vector.ContainsKey(index))
+            try
             {
+                if (!vector.ContainsKey(index) && index >=0 && index < this.Length)
+                {
+                    return 0;
+                }
+                
+                    
                 return vector[index];
             }
-            else if (index >= 0 && index < this.Length)
+            catch (KeyNotFoundException)
             {
-                return 0;
+                Console.WriteLine($"{index} was out of range. Must be non-negative and less than {this.Length}.");
             }
-            else
+            catch (Exception ex)
             {
-                return null;
+                Console.WriteLine(ex.ToString());
             }
+            return 0;
+        }
 
+        public SparseVector Copy(SparseVector old_vector)
+        {
+            SparseVector vector = new SparseVector(old_vector.Length);
+            for (int i = 0; i < old_vector.Length; i++)
+            {
+                vector.SetItem(i, vector.GetItem(i));
+            }
+            return vector;
         }
     }
 }

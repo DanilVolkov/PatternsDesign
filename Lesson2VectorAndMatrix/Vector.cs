@@ -38,7 +38,7 @@
             }
         }
 
-        public int? GetItem(int index)
+        public int GetItem(int index)
         {
             try
             {
@@ -48,12 +48,21 @@
             {
                 Console.WriteLine($"{index} was out of range. Must be non-negative and less than {vector.Length}.");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
-            return null;
-            
+            return 0;
+        }
+
+        public Vector Copy(Vector old_vector)
+        {
+            Vector vector = new Vector(old_vector.Length);
+            for (int i = 0; i < old_vector.Length; i++)
+            {
+                vector.SetItem(i, vector.GetItem(i));
+            }
+            return vector;
         }
     }
 }

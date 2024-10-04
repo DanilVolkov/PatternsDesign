@@ -7,7 +7,7 @@
 
         public int? CountColumns { get; }
 
-        void AddItem(int row, int column, int value);
+        void SetItem(int row, int column, int value);
 
         object GetItem(int row, int column);
     }

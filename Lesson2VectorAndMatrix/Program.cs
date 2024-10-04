@@ -1,4 +1,5 @@
 ﻿using Lesson2VectorAndMatrix;
+using System.Runtime.ExceptionServices;
 
 Console.WriteLine("Vector");
 
@@ -35,6 +36,35 @@ for (int i = 0; i < sparseVector.Length; i++)
 {
     Console.WriteLine(sparseVector.GetItem(i));
 }
+
+Console.WriteLine();
+Console.WriteLine("Matrix");
+
+Matrix matrix = new Matrix(3, 2);
+Console.WriteLine(matrix.GetItem(4, 1));
+
+List<Vector> vector_1 = new List<Vector>() { new Vector(3), new Vector(3), new Vector(3) };
+
+Matrix matrix_1 = new Matrix(vector_1);
+
+matrix_1.SetItem(1, 2, 19);
+matrix_1.SetItem(2, 1, 5);
+matrix_1.SetItem(0, 0, 3);
+matrix_1.SetItem(0, 2, 100);
+matrix_1.SetItem(1, 1, 78);
+matrix_1.SetItem(2, 1, 34);
+matrix_1.SetItem(2, 2, 54);
+matrix_1.SetItem(2, 0, 93);
+
+for (int i = 0; i < matrix_1.CountRows; i++)
+{
+    for (int j = 0; j < matrix_1.CountColumns; j++)
+    {
+        Console.Write($"{matrix_1.GetItem(i, j)} ");
+    }
+    Console.WriteLine();
+}
+
 
 
 

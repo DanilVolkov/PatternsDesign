@@ -6,6 +6,6 @@
 
         void SetItem(int index, int value);
 
-        int? GetItem(int index);
+        int GetItem(int index);
     }
 }

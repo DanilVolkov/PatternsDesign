@@ -1,23 +1,88 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lesson2VectorAndMatrix
+﻿namespace Lesson2VectorAndMatrix
 {
-    class Matrix : SomeMatrix<Vector>
+    class Matrix : SomeMatrix
     {
-        public override int? CountColumns => throw new NotImplementedException();
-
-        public override void AddItem(int row, int column, int value)
+        private Dictionary<int, Vector> matrix;
+        public override int? CountColumns
         {
-            throw new NotImplementedException();
+            get
+            {
+                return matrix.Count;
+            }
+        }
+
+        public override int CountRows
+        {
+            get
+            {
+                return matrix[0].Length;
+            }
+        }
+
+        public Matrix(int rows, int columns)
+        {
+            if (rows <= 0 || columns <= 0)
+            {
+                throw new Exception("Matrix must have row or column sizes greater than 0");
+            }
+            matrix = new Dictionary<int, Vector>();
+            for (int i = 0; i < rows; i++)
+            {
+                matrix.Add(i, new Vector(columns));
+            }
+        }
+
+        public Matrix(List<Vector> vectors)
+        {
+
+            if (vectors.Count <= 0)
+            {
+                throw new Exception("Matrix must have row size greater than 0");
+            }
+
+            matrix = new Dictionary<int, Vector>();
+            int countColumns = vectors[0].Length;
+            for (int i = 0; i < vectors.Count; i++)
+            {
+                if (vectors[i].Length != countColumns)
+                {
+                    throw new Exception("Dimensions of the vectors must be the same");
+                }
+                matrix.Add(i, vectors[i].Copy(vectors[i]));
+            }
+        }
+
+        public override void SetItem(int row, int column, int value)
+        {
+            try
+            {
+                matrix[row].SetItem(column, value);
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine($"{row} was out of range. Must be non-negative and less than {this.CountRows}.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         public override object GetItem(int row, int column)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return matrix[row].GetItem(column);
+            }
+            catch (KeyNotFoundException)
+            {
+                Console.WriteLine($"{row} was out of range. Must be non-negative and less than {row}.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return 0;
         }
     }
 }
