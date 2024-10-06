@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson1", "Lessons\Lesson1.csproj", "{CC3D4109-492F-4754-AA8D-982DC92ABD49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListenerAndRoom", "Lessons\ListenerAndRoom.csproj", "{CC3D4109-492F-4754-AA8D-982DC92ABD49}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workout", "Workout\Workout.csproj", "{D0E38A5C-C7CB-4217-AC48-CF7DCCC61ABD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson2VectorAndMatrix", "Lesson2VectorAndMatrix\Lesson2VectorAndMatrix.csproj", "{1658183B-1207-4127-9E21-CD5348D34E4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson2VectorAndMatrix", "Lesson2VectorAndMatrix\Lesson2VectorAndMatrix.csproj", "{1658183B-1207-4127-9E21-CD5348D34E4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

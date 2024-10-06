@@ -1,40 +1,12 @@
-﻿namespace Lesson2VectorAndMatrix
+﻿
+namespace Lesson2VectorAndMatrix
 {
     class Matrix : SomeMatrix
     {
-        public Matrix(int rows, int columns)
-        {
-            if (rows <= 0 || columns <= 0)
-            {
-                throw new Exception("Matrix must have row or column sizes greater than 0");
-            }
-            base.matrix = new Dictionary<int, IVector>();
-            for (int i = 0; i < rows; i++)
-            {
-                base.matrix.Add(i, create(columns));
-            }
-        }
+        public Matrix(List<Vector> vectors) : base(vectors) { }
 
-        protected IVector create(int size) => new Vector(size); // TODO: вынести у другого класса и перенести в SomeMatrix
+        public Matrix(int rows, int columns) : base(rows, columns) { }
 
-        public Matrix(List<Vector> vectors)
-        {
-
-            if (vectors.Count <= 0)
-            {
-                throw new Exception("Matrix must have row size greater than 0");
-            }
-
-            matrix = new Dictionary<int, IVector>();
-            int countColumns = vectors[0].Length;
-            for (int i = 0; i < vectors.Count; i++)
-            {
-                if (vectors[i].Length != countColumns)
-                {
-                    throw new Exception("Dimensions of the vectors must be the same");
-                }
-                matrix.Add(i, vectors[i].Copy(vectors[i]));
-            }
-        }
+        protected override IVector Create(int size) => new Vector(size);
     }
 }
