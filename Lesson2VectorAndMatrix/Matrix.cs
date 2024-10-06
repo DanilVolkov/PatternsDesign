@@ -8,12 +8,14 @@
             {
                 throw new Exception("Matrix must have row or column sizes greater than 0");
             }
-            base.matrix = new Dictionary<int, dynamic>();
+            base.matrix = new Dictionary<int, IVector>();
             for (int i = 0; i < rows; i++)
             {
-                base.matrix.Add(i, new Vector(columns));
+                base.matrix.Add(i, create(columns));
             }
         }
+
+        protected IVector create(int size) => new Vector(size); // TODO: вынести у другого класса и перенести в SomeMatrix
 
         public Matrix(List<Vector> vectors)
         {
@@ -23,7 +25,7 @@
                 throw new Exception("Matrix must have row size greater than 0");
             }
 
-            matrix = new Dictionary<int, dynamic>();
+            matrix = new Dictionary<int, IVector>();
             int countColumns = vectors[0].Length;
             for (int i = 0; i < vectors.Count; i++)
             {

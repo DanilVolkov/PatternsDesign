@@ -2,7 +2,7 @@
 {
     abstract class SomeMatrix : IMatrix
     {
-        protected Dictionary<int, dynamic> matrix;
+        protected Dictionary<int, IVector> matrix;
         public int CountColumns
         {
             get

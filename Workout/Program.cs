@@ -4,24 +4,18 @@
     new Word("архитектуру"), new Sign('!'), new Sign('\n'));
 
 txt.Print(new PrinterDefault());
-
 txt.Print(new PrinterSpecial());
 
-PrinterDelegate delegatePrinter = new PrinterDelegate();
-delegatePrinter.Assign(txt);
-delegatePrinter.Print("Непосредственная печать делегатом:");
+PrinterDelegate printer = new PrinterDelegate();
+printer.Print(txt);
+txt.Print(printer);
+
+
 
 interface IPrinter
 {
-    void Print(Object message);
-}
-
-class PrinterDefault : IPrinter
-{
-    public virtual void Print(Object message)
-    {
-        Console.Write(message);
-    }
+    void Print(string str);
+    void Print(char chr);
 }
 
 interface IPrintable
@@ -29,85 +23,82 @@ interface IPrintable
     void Print(IPrinter printer);
 }
 
-class Word : IPrintable
+interface IPrinterDelegate : IPrinter
 {
-    private string message;
-    public Word(string message)
-    {
-        this.message = message;
-    }
+    void Print(IPrintable printer);
+}
 
-    public void Print(IPrinter printer)
+class PrinterDelegate : PrinterDefault, IPrinterDelegate
+{
+    public void Print(IPrintable printer)
     {
-        printer.Print(this.message);
+        printer.Print(this);
     }
 }
 
-class Sign : IPrintable
+class PrinterDefault : IPrinter
 {
-    private char symbol;
-    public Sign(char symbol)
+    public virtual void Print(string str)
     {
-        this.symbol = symbol;
+        Console.Write(str);
     }
-    public void Print(IPrinter printer)
-    {
-        printer.Print(this.symbol);
-    }
-}
 
-class Text : IPrintable
-{
-    private IPrintable[] printable;
-
-    public Text(params IPrintable[] printable)
+    public void Print(char chr)
     {
-        this.printable = printable;
-    }
-    public void Print(IPrinter printer)
-    {
-        foreach (var printable in this.printable)
-        {
-            printable.Print(printer);
-        }
+        Console.Write(chr);
     }
 }
 
 class PrinterSpecial : PrinterDefault
 {
-    public override void Print(Object message)
+    public override void Print(string str)
     {
-        if (message.GetType() == typeof(string))
-        {
-            base.Print($"({message})");
-        }
-        else
-        {
-            base.Print(message);
-        }
+        base.Print($"({str})");
     }
 }
 
-interface IPrinterDelegate : IPrinter
+class Word : IPrintable
 {
-    void Assign(IPrintable printable);
+    private string word;
+
+    public Word(string word)
+    {
+        this.word = word;
+    }
+    public void Print(IPrinter printer)
+    {
+        printer.Print(word);
+    }
 }
 
-class PrinterDelegate : IPrinterDelegate
+class Sign : IPrintable
 {
-    private IPrintable delegatee;
+    private char sign;
 
-    // Назначение поручителя
-    public void Assign(IPrintable printable)
+    public Sign(char sign)
     {
-        delegatee = printable;
+        this.sign = sign;
     }
-
-    // Реализация метода печати
-    public void Print(Object message)
+    public void Print(IPrinter printer)
     {
-        Console.Write("PrinterDelegate: ");
-        delegatee?.Print(new PrinterDefault());
+        printer.Print(sign);
     }
 }
 
+class Text : IPrintable
+{
+    private IPrintable[] printables;
+
+    public Text(params IPrintable[] printables)
+    {
+        this.printables = printables;
+    }
+
+    public void Print(IPrinter printer)
+    {
+        foreach (IPrintable printable in printables)
+        {
+            printable.Print(printer);
+        }
+    }
+}

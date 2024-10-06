@@ -24,7 +24,7 @@ public interface IListener
     void Listen(string sound);
 }
 
-public class Room
+public class Room : IListener
 {
     List<IListener> listeners = new List<IListener>();
     public void Echo(string sound)
@@ -38,6 +38,11 @@ public class Room
     public void Enter(IListener listener)
     {
         listeners.Add(listener);
+    }
+
+    public void Listen(string sound)
+    {
+        Echo(sound);
     }
 }
 
