@@ -4,10 +4,10 @@ namespace Lesson2VectorAndMatrix
 {
     class SparseMatrix : SomeMatrix
     {
-        public SparseMatrix(List<Vector> vectors) : base(vectors) { }
+        public SparseMatrix(List<SparseVector> vectors) : base(vectors) { }
 
         public SparseMatrix(int rows, int columns) : base(rows, columns) { }
 
-        protected override IVector Create(int size) => new Vector(size);
+        protected override IVector Create(int size) => new SparseVector(size);
     }
 }

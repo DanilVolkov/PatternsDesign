@@ -74,32 +74,16 @@ class Comparing : Comparings
     }
 }
 
-abstract class Decorator : Comparings
+class ComparingReverse : Comparings
 {
-    protected Comparings comparings;
-
-    public Decorator(Comparings comparings)
-    {
-        this.comparings = comparings;
-    }
-
-    public void SetComparing(Comparings comparings)
+    Comparings comparings;
+    public ComparingReverse(Comparings comparings)
     {
         this.comparings = comparings;
     }
 
     public override bool Compare(int a, int b)
     {
-        return this.comparings.Compare(a, b);
-    }
-}
-
-class ComparingReverse : Decorator
-{
-    public ComparingReverse(Comparings comparings) : base(comparings) { }
-
-    public override bool Compare(int a, int b)
-    {
-        return !base.Compare(a, b);
+        return !comparings.Compare(a, b);
     }
 }
