@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workout", "Workout\Workout.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson2VectorAndMatrix", "Lesson2VectorAndMatrix\Lesson2VectorAndMatrix.csproj", "{1658183B-1207-4127-9E21-CD5348D34E4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortingVector", "SortingVector\SortingVector.csproj", "{0D50201E-CFFD-4ECF-A25E-A0CA55DD13B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SortingVector", "SortingVector\SortingVector.csproj", "{0D50201E-CFFD-4ECF-A25E-A0CA55DD13B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisualizationMatrices", "VisualizationMatrices\VisualizationMatrices.csproj", "{BEA0AFF5-2295-4049-85BE-C62E84712FD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{0D50201E-CFFD-4ECF-A25E-A0CA55DD13B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D50201E-CFFD-4ECF-A25E-A0CA55DD13B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D50201E-CFFD-4ECF-A25E-A0CA55DD13B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEA0AFF5-2295-4049-85BE-C62E84712FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEA0AFF5-2295-4049-85BE-C62E84712FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEA0AFF5-2295-4049-85BE-C62E84712FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEA0AFF5-2295-4049-85BE-C62E84712FD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

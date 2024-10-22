@@ -1,4 +1,4 @@
-﻿namespace Lesson2VectorAndMatrix
+﻿namespace VisualizationMatrices
 {
     abstract class SomeMatrix : IMatrix
     {
@@ -104,6 +104,23 @@
             {
                 throw new Exception(ex.ToString());
             }
+        }
+
+        public void Draw(IDrawer drawer)
+        {
+            int rowCount = matrix.Count;
+            int columnCount = matrix[0].Length;
+            int[,] matrix_fro_draw = new int[rowCount, columnCount];
+
+            foreach (var pair in matrix)
+            {
+                for (int i = 0; i < columnCount; i++)
+                {
+                    matrix_fro_draw[pair.Key, i] = pair.Value.GetItem(i);
+                }
+            }
+
+            drawer.DMatrix(matrix_fro_draw);
         }
     }
 }
