@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             btnMatrix = new Button();
             btnSparseMatrix = new Button();
             checkBoxEdge = new CheckBox();
-            pictureBox = new PictureBox();
             textBox = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
+            dataGridView = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
             // btnMatrix
@@ -54,6 +55,7 @@
             btnSparseMatrix.TabIndex = 1;
             btnSparseMatrix.Text = "Генерация разреженной матрицы";
             btnSparseMatrix.UseVisualStyleBackColor = true;
+            btnSparseMatrix.Click += btnSparseMatrix_Click;
             // 
             // checkBoxEdge
             // 
@@ -64,14 +66,7 @@
             checkBoxEdge.TabIndex = 2;
             checkBoxEdge.Text = "Граница матрицы";
             checkBoxEdge.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox
-            // 
-            pictureBox.Location = new Point(16, 12);
-            pictureBox.Name = "pictureBox";
-            pictureBox.Size = new Size(385, 343);
-            pictureBox.TabIndex = 3;
-            pictureBox.TabStop = false;
+            checkBoxEdge.CheckedChanged += checkBoxEdge_CheckedChanged;
             // 
             // textBox
             // 
@@ -81,19 +76,45 @@
             textBox.Size = new Size(355, 343);
             textBox.TabIndex = 4;
             // 
+            // dataGridView
+            // 
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.BackgroundColor = SystemColors.Control;
+            dataGridView.BorderStyle = BorderStyle.None;
+            dataGridView.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.ColumnHeadersVisible = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView.Location = new Point(16, 12);
+            dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
+            dataGridView.RowHeadersVisible = false;
+            dataGridView.RowHeadersWidth = 62;
+            dataGridView.RowTemplate.Height = 33;
+            dataGridView.Size = new Size(377, 343);
+            dataGridView.TabIndex = 5;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(860, 443);
+            Controls.Add(dataGridView);
             Controls.Add(textBox);
-            Controls.Add(pictureBox);
             Controls.Add(checkBoxEdge);
             Controls.Add(btnSparseMatrix);
             Controls.Add(btnMatrix);
             Name = "Form1";
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -103,7 +124,7 @@
         private Button btnMatrix;
         private Button btnSparseMatrix;
         private CheckBox checkBoxEdge;
-        public PictureBox pictureBox;
         public TextBox textBox;
+        public DataGridView dataGridView;
     }
 }

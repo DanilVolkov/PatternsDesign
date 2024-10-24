@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace VisualizationMatrices
 {
-    interface IDrawer
+    class NoBord : Border
     {
-        //void DBordMatrix(string matrix);
-        void DMatrix(int[,] matrix);
-        
+        public override dynamic Bord(dynamic obj)
+        {
+            return obj;
+        }
     }
 }

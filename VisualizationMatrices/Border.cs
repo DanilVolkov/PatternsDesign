@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace VisualizationMatrices
 {
-    interface IDrawer
+    abstract class Border
     {
-        //void DBordMatrix(string matrix);
-        void DMatrix(int[,] matrix);
-        
+        public abstract dynamic Bord(dynamic obj);
     }
 }

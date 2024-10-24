@@ -8,17 +8,18 @@ namespace VisualizationMatrices
 {
     class ConsoleDrawer : IDrawer
     {
-        public void DBordMatrix(int row, int col)
+        Border border;
+
+        public ConsoleDrawer(Border border = null)
         {
-
+            this.border = border;
+            if (border is null)
+            {
+                this.border = new NoBord();
+            }
         }
-
-        public void DCell(int value, int row, int column)
-        {
-            
-        }
-
-        public void DMatrix(int[,] matrix)
+        
+        public virtual void DMatrix(int[,] matrix)
         {
             string text = "";
 
@@ -26,17 +27,14 @@ namespace VisualizationMatrices
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    text += matrix[i, j] + "";
+                    text += matrix[i, j] + " ";
                 }
-                text += Environment.NewLine;
+                text = text.Substring(0, text.Length - 1) + Environment.NewLine;
             }
 
+            text = border.Bord(text);
+
             Program.form.textBox.Text = text;
-
-        }
-
-        public void DRow(int[] values, int row, int column)
-        {
 
         }
     }
