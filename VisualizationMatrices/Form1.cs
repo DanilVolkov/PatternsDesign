@@ -5,16 +5,17 @@ namespace VisualizationMatrices
     public partial class Form1 : Form
     {
 
-        ConsoleDrawer drawer;
-        GraphicsDrawer graphicsDrawer;
-        Border bord;
+        IDrawer drawer;
+        IDrawer graphicsDrawer;
+
+        //Border bord;
 
         public Form1()
         {
             Program.form = this;
-            bord = new NoBord();
-            drawer = new ConsoleDrawer(bord);
-            graphicsDrawer = new GraphicsDrawer(bord);
+            //bord = new NoBord();
+            drawer = new ConsoleDrawer();
+            graphicsDrawer = new GraphicsDrawer();
             InitializeComponent();
         }
 
@@ -40,12 +41,14 @@ namespace VisualizationMatrices
             CheckBox checkBox = (CheckBox)sender;
             if (checkBox.Checked)
             {
-                drawer = new ConsoleDrawer(new AddConsoleBord(bord));
-                graphicsDrawer = new GraphicsDrawer(new AddGraphicsBord(bord));
+                drawer = new ConsoleBorder(drawer);
+                graphicsDrawer = new GraphicsBorder(graphicsDrawer);
             }
             else
             {
                 drawer = new ConsoleDrawer();
+                //drawer = drawer.Dispose(); // как бы правильно сделать раздекорирование?
+
                 graphicsDrawer = new GraphicsDrawer();
             }
         }

@@ -5,20 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace VisualizationMatrices
 {
     class GraphicsDrawer : IDrawer
     {
-        Border border;
-
-        public GraphicsDrawer(Border border = null)
+        public virtual dynamic DBordMatrix(dynamic obj)
         {
-            this.border = border;
-            if (border is null)
-            {
-                this.border = new NoBord();
-            }
+            obj.BorderStyle = BorderStyle.None;
+            return obj;
         }
 
         public void DMatrix(int[,] matrix)
@@ -35,9 +31,27 @@ namespace VisualizationMatrices
 
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            dataGridView = border.Bord(dataGridView);
+            dataGridView = DBordMatrix(dataGridView);
+        }
+    }
+    class GraphicsBorder : GraphicsDrawer
+    {
+        IDrawer drawer;
 
+        public GraphicsBorder(IDrawer drawer)
+        {
+            this.drawer = drawer;
+        }
 
+        public override dynamic DBordMatrix(dynamic obj)
+        {
+            obj.BorderStyle = BorderStyle.FixedSingle;
+            return obj;
+        }
+
+        public IDrawer Dispose()
+        {
+            return drawer;
         }
     }
 }

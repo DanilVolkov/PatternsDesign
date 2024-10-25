@@ -8,7 +8,7 @@ namespace VisualizationMatrices
 {
     interface IDrawer
     {
-        //void DBordMatrix(string matrix);
+        dynamic DBordMatrix(dynamic matrix);
         void DMatrix(int[,] matrix);
         
     }

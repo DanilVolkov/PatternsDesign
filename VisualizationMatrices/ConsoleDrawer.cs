@@ -8,18 +8,12 @@ namespace VisualizationMatrices
 {
     class ConsoleDrawer : IDrawer
     {
-        Border border;
-
-        public ConsoleDrawer(Border border = null)
+        public virtual dynamic DBordMatrix(dynamic text)
         {
-            this.border = border;
-            if (border is null)
-            {
-                this.border = new NoBord();
-            }
+            return text;
         }
-        
-        public virtual void DMatrix(int[,] matrix)
+
+        public void DMatrix(int[,] matrix)
         {
             string text = "";
 
@@ -32,10 +26,31 @@ namespace VisualizationMatrices
                 text = text.Substring(0, text.Length - 1) + Environment.NewLine;
             }
 
-            text = border.Bord(text);
+            text = DBordMatrix(text);
 
             Program.form.textBox.Text = text;
 
+        }
+    }
+
+    class ConsoleBorder : ConsoleDrawer
+    {
+        IDrawer drawer;
+
+        public ConsoleBorder(IDrawer drawer)
+        {
+            this.drawer = drawer;
+        }
+
+        public override dynamic DBordMatrix(dynamic text)
+        {
+            text = "|" + drawer.DBordMatrix(text).Replace(Environment.NewLine, $"|{Environment.NewLine}|");
+            return text.Substring(0, text.Length - 1);
+        }
+
+        public IDrawer Dispose()
+        {
+            return drawer;
         }
     }
 }
