@@ -82,7 +82,8 @@
             dataGridView.AllowUserToDeleteRows = false;
             dataGridView.BackgroundColor = SystemColors.Control;
             dataGridView.BorderStyle = BorderStyle.None;
-            dataGridView.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            dataGridView.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.ColumnHeadersVisible = false;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -93,6 +94,7 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView.Enabled = false;
             dataGridView.Location = new Point(16, 12);
             dataGridView.Name = "dataGridView";
             dataGridView.ReadOnly = true;
@@ -101,6 +103,8 @@
             dataGridView.RowTemplate.Height = 33;
             dataGridView.Size = new Size(377, 343);
             dataGridView.TabIndex = 5;
+            dataGridView.CellFormatting += dataGridView_CellFormatting;
+            dataGridView.SelectionChanged += dataGridView_SelectionChanged;
             // 
             // Form1
             // 
@@ -124,7 +128,7 @@
         private Button btnMatrix;
         private Button btnSparseMatrix;
         private CheckBox checkBoxEdge;
-        public TextBox textBox;
-        public DataGridView dataGridView;
+        private TextBox textBox;
+        private DataGridView dataGridView;
     }
 }

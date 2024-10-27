@@ -108,20 +108,26 @@
 
         public void Draw(IDrawer drawer)
         {
-            int rowCount = matrix.Count;
-            int columnCount = matrix[0].Length;
-            int[,] matrix_fro_draw = new int[rowCount, columnCount];
-
-            foreach (var pair in matrix)
+            drawer.BeginDraw(this);
+            drawer.DrawBorder(this);
+            for (int row = 0; row < this.CountRows; row++)
             {
-                for (int i = 0; i < columnCount; i++)
+                drawer.BeginDrawRow(this, row);
+                for (int col = 0; col < this.CountColumns; col++)
                 {
-                    matrix_fro_draw[pair.Key, i] = pair.Value.GetItem(i);
-                }
-            }
+                    if (!Condition(this, row, col)) continue;
+                    drawer.BeginDrawItem(this, row, col);
+                    drawer.DrawItemBorder(this, row, col);
+                    drawer.DrawItem(this, row, col);
+                    drawer.EndDrawItem(this, row, col);
 
-            drawer.DMatrix(matrix_fro_draw);
+                }
+                drawer.EndDrawRow(this, row);
+            }
+            drawer.EndDraw(this);
         }
+
+        protected abstract bool Condition(SomeMatrix someMatrix, int row, int col);
     }
 }
 

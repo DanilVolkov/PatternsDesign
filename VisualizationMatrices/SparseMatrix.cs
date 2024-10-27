@@ -8,6 +8,18 @@ namespace VisualizationMatrices
 
         public SparseMatrix(int rows, int columns) : base(rows, columns) { }
 
+        protected override bool Condition(SomeMatrix someMatrix, int row, int col)
+        {
+            if (someMatrix.GetItem(row, col) == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         protected override IVector Create(int size) => new SparseVector(size);
     }
 }

@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace VisualizationMatrices
 {
@@ -12,11 +13,10 @@ namespace VisualizationMatrices
 
         public Form1()
         {
-            Program.form = this;
-            //bord = new NoBord();
-            drawer = new ConsoleDrawer();
-            graphicsDrawer = new GraphicsDrawer();
             InitializeComponent();
+            Program.form = this;
+            drawer = new ConsoleDrawer(textBox);
+            graphicsDrawer = new GraphicsDrawer(dataGridView);
         }
 
         private void btnGenerateMatrix(object sender, EventArgs e)
@@ -25,7 +25,6 @@ namespace VisualizationMatrices
             InitMatrix.FillMatrix(matrix, 5, 10);
             matrix.Draw(drawer);
             matrix.Draw(graphicsDrawer);
-
         }
 
         private void btnSparseMatrix_Click(object sender, EventArgs e)
@@ -41,16 +40,30 @@ namespace VisualizationMatrices
             CheckBox checkBox = (CheckBox)sender;
             if (checkBox.Checked)
             {
-                drawer = new ConsoleBorder(drawer);
-                graphicsDrawer = new GraphicsBorder(graphicsDrawer);
+                drawer = new AddConsoleBorder(drawer, textBox);
+                graphicsDrawer = new AddGraphicsBorder(graphicsDrawer, dataGridView);
             }
             else
             {
-                drawer = new ConsoleDrawer();
-                //drawer = drawer.Dispose(); // как бы правильно сделать раздекорирование?
-
-                graphicsDrawer = new GraphicsDrawer();
+                drawer = drawer.Dispose();
+                graphicsDrawer = new GraphicsDrawer(dataGridView);
             }
+        }
+
+        private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value is null)
+            {
+                e.CellStyle.BackColor = SystemColors.Control;
+            }
+        }
+
+        
+        
+
+        private void dataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            dataGridView.ClearSelection();
         }
     }
 }

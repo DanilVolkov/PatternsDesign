@@ -8,8 +8,15 @@ namespace VisualizationMatrices
 {
     interface IDrawer
     {
-        dynamic DBordMatrix(dynamic matrix);
-        void DMatrix(int[,] matrix);
-        
+        void BeginDraw(IMatrix matrix);
+        void BeginDrawRow(IMatrix matrix, int row);
+        void BeginDrawItem(IMatrix matrix, int row, int col);
+        void DrawItemBorder(IMatrix matrix, int row, int col);
+        void DrawItem(IMatrix matrix, int row, int col);
+        void EndDrawItem(IMatrix matrix, int row, int col);
+        void EndDrawRow(IMatrix matrix, int row);
+        void DrawBorder(IMatrix matrix);
+        void EndDraw(IMatrix matrix);
+        IDrawer Dispose();
     }
 }

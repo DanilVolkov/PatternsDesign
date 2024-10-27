@@ -1,56 +1,94 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace VisualizationMatrices
 {
     class ConsoleDrawer : IDrawer
     {
-        public virtual dynamic DBordMatrix(dynamic text)
+        protected TextBox textBox;
+        public ConsoleDrawer(TextBox textBox)
         {
-            return text;
+            this.textBox = textBox;
+        }
+        public void BeginDraw(IMatrix matrix)
+        {
+            textBox.Text = "";
         }
 
-        public void DMatrix(int[,] matrix)
-        {
-            string text = "";
+        public void BeginDrawItem(IMatrix matrix, int row, int col) { }
 
-            for (int i = 0; i < matrix.GetLength(0); i++)
+        public void BeginDrawRow(IMatrix matrix, int row) { }
+
+        public virtual void DrawBorder(IMatrix matrix)
+        {
+            int rowCount = matrix.CountRows;
+            for (int i = 0; i < rowCount; i++)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
-                {
-                    text += matrix[i, j] + " ";
-                }
-                text = text.Substring(0, text.Length - 1) + Environment.NewLine;
+                textBox.Text += Environment.NewLine;
             }
-
-            text = DBordMatrix(text);
-
-            Program.form.textBox.Text = text;
-
         }
+
+        public void DrawItem(IMatrix matrix, int row, int col)
+        {
+            if (col == matrix.CountColumns - 1)
+            {
+                textBox.Paste(matrix.GetItem(row, col).ToString());
+            }
+            else
+            {
+                textBox.Paste(matrix.GetItem(row, col).ToString() + " ");
+            }
+            
+        }
+
+        public void DrawItemBorder(IMatrix matrix, int row, int col) { }
+
+        public void EndDraw(IMatrix matrix) 
+        {
+            
+        }
+
+        public void EndDrawItem(IMatrix somatrixmeMatrix, int row, int col) { }
+
+        public void EndDrawRow(IMatrix matrix, int row)
+        {
+            
+            string[] lines = textBox.Lines;
+            int start = lines[row + 1].Length / 2;
+            for (int i = 0; i < row + 1; i++)
+            {
+                start += lines[i].Length + 2; // \r\n - это 2 символа
+            }
+            textBox.SelectionStart = start;
+            
+        }
+
+        public virtual IDrawer Dispose() => this;
     }
 
-    class ConsoleBorder : ConsoleDrawer
+    class AddConsoleBorder : ConsoleDrawer
     {
+
         IDrawer drawer;
 
-        public ConsoleBorder(IDrawer drawer)
+        public AddConsoleBorder(IDrawer drawer, TextBox textBox) : base(textBox)
         {
             this.drawer = drawer;
         }
 
-        public override dynamic DBordMatrix(dynamic text)
+        public override void DrawBorder(IMatrix matrix)
         {
-            text = "|" + drawer.DBordMatrix(text).Replace(Environment.NewLine, $"|{Environment.NewLine}|");
-            return text.Substring(0, text.Length - 1);
+            drawer.DrawBorder(matrix);
+            string text = textBox.Text;
+            text = "|" + text.Replace(Environment.NewLine, $"|{Environment.NewLine}|");
+            textBox.Text = text.Substring(0, text.Length - 1);
+            textBox.SelectionStart = textBox.Lines[0].Length / 2;
         }
 
-        public IDrawer Dispose()
+        public override IDrawer Dispose()
         {
             return drawer;
         }
     }
+
+
 }

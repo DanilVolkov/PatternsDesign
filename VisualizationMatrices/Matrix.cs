@@ -7,6 +7,8 @@ namespace VisualizationMatrices
 
         public Matrix(int rows, int columns) : base(rows, columns) { }
 
+        protected override bool Condition(SomeMatrix someMatrix, int row, int col) => true;
+
         protected override IVector Create(int size) => new Vector(size);
     }
 }

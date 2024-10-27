@@ -5,51 +5,142 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace VisualizationMatrices
 {
     class GraphicsDrawer : IDrawer
     {
-        public virtual dynamic DBordMatrix(dynamic obj)
+        DataGridView dataGridView;
+        protected int lineCount;
+        List<string> borders;
+
+        public GraphicsDrawer(DataGridView dataGridView)
         {
-            obj.BorderStyle = BorderStyle.None;
-            return obj;
+            this.dataGridView = dataGridView;
+            dataGridView.CellPainting += dataGridView_CellPainting;
+            lineCount = 0;
+            borders = new List<string>();
+        }
+        public void BeginDraw(IMatrix matrix)
+        {
+            dataGridView.Rows.Clear();
+            dataGridView.RowCount = matrix.CountRows;
+            dataGridView.ColumnCount = matrix.CountColumns;
         }
 
-        public void DMatrix(int[,] matrix)
+        public void BeginDrawItem(IMatrix matrix, int row, int col) { }
+
+        public void BeginDrawRow(IMatrix matrix, int row) { }
+
+        public virtual IDrawer Dispose() => this;
+
+        public virtual void DrawBorder(IMatrix matrix) { }
+
+        public void DrawItem(IMatrix matrix, int row, int col)
         {
-            DataGridView dataGridView = Program.form.dataGridView;
-            dataGridView.RowCount = matrix.GetLength(0);
-            dataGridView.ColumnCount = matrix.GetLength(1);
-
-            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            for (int i = 0; i < dataGridView.ColumnCount; i++)
             {
-                for (int j = 0; j < dataGridView.Columns.Count; j++)
-                    dataGridView[j, i].Value = matrix[i, j];
+                if (dataGridView[i, row].Value is null)
+                {
+                    dataGridView[i, row].Value = matrix.GetItem(row, col);
+                    break;
+                }
             }
+        }
 
+        public void DrawItemBorder(IMatrix matrix, int row, int col) { }
+
+        public void EndDraw(IMatrix matrix)
+        {
             dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            dataGridView = DBordMatrix(dataGridView);
+            borders.Clear();
+            for (int i = 0; i < dataGridView.RowCount; i++)
+            {
+                if (!(dataGridView[0, i].Value is null))
+                {
+                    borders.Add($"0 {i} begin");
+                }
+            }
+
+            for (int i = 0; i < dataGridView.RowCount; i++)
+            {
+                for (int j = 0; j < dataGridView.ColumnCount; j++)
+                {
+                    if ((j < dataGridView.ColumnCount - 1 && !(dataGridView[j, i].Value is null) && dataGridView[j + 1, i].Value is null) ||
+                        (j == dataGridView.ColumnCount - 1 && !(dataGridView[j, i].Value is null)))
+                    {
+                        borders.Add($"{j} {i}");
+                    }
+                }
+            }
+        }
+
+        public void EndDrawItem(IMatrix matrix, int row, int col) { }
+
+        public void EndDrawRow(IMatrix matrix, int row) { }
+
+        private void DrawBord(DataGridViewCellPaintingEventArgs e, Pen p, int x)
+        {
+            for (int i = 0; i < lineCount; i++)
+            {
+                e.Graphics.DrawLine(p, new Point(x + i * 3, e.CellBounds.Top), new Point(x + i * 3, e.CellBounds.Bottom));
+                e.Graphics.DrawLine(p, new Point(x - i * 3, e.CellBounds.Top), new Point(x - i * 3, e.CellBounds.Bottom));
+            }
+        }
+
+        private void dataGridView_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            int count = 0;
+            foreach (var border in borders)
+            {
+                if (border.Contains($"{e.ColumnIndex} {e.RowIndex}"))
+                {
+                    count++;
+                }
+            }
+            if (count > 0)    
+            {
+                e.Handled = true;
+                using (Brush b = new SolidBrush(dataGridView.DefaultCellStyle.BackColor))
+                {
+                    e.Graphics.FillRectangle(b, e.CellBounds);
+                }
+                using (Pen p = new Pen(Brushes.Black))
+                {
+                    p.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+                    int x = e.ColumnIndex == 0 ? e.CellBounds.Left : e.CellBounds.Right - 1;
+                    DrawBord(e, p, x);
+
+                    if (count > 1)
+                    {
+                        x = e.CellBounds.Right - 1;
+                        DrawBord(e, p, x);
+                    }
+
+                    
+                }
+                e.PaintContent(e.ClipBounds);
+            }
         }
     }
-    class GraphicsBorder : GraphicsDrawer
+
+    class AddGraphicsBorder : GraphicsDrawer
     {
         IDrawer drawer;
 
-        public GraphicsBorder(IDrawer drawer)
+        public AddGraphicsBorder(IDrawer drawer, DataGridView dataGridView) : base(dataGridView)
         {
             this.drawer = drawer;
         }
 
-        public override dynamic DBordMatrix(dynamic obj)
+        public override void DrawBorder(IMatrix matrix)
         {
-            obj.BorderStyle = BorderStyle.FixedSingle;
-            return obj;
+            lineCount = 1;
         }
 
-        public IDrawer Dispose()
+        public override IDrawer Dispose()
         {
             return drawer;
         }
