@@ -1,4 +1,6 @@
-﻿namespace VisualizationMatrices
+﻿using System.Diagnostics;
+
+namespace VisualizationMatrices
 {
     abstract class SomeMatrix : IMatrix
     {

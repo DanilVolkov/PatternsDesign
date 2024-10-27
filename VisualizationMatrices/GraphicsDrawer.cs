@@ -101,7 +101,7 @@ namespace VisualizationMatrices
                 }
             }
             if (count > 0)    
-            {
+            {   
                 e.Handled = true;
                 using (Brush b = new SolidBrush(dataGridView.DefaultCellStyle.BackColor))
                 {
@@ -118,31 +118,39 @@ namespace VisualizationMatrices
                         x = e.CellBounds.Right - 1;
                         DrawBord(e, p, x);
                     }
-
-                    
                 }
                 e.PaintContent(e.ClipBounds);
             }
         }
-    }
 
-    class AddGraphicsBorder : GraphicsDrawer
-    {
-        IDrawer drawer;
-
-        public AddGraphicsBorder(IDrawer drawer, DataGridView dataGridView) : base(dataGridView)
+        public void AddBorder()
         {
-            this.drawer = drawer;
+            lineCount++;
         }
 
-        public override void DrawBorder(IMatrix matrix)
+        internal void DelBorder()
         {
-            lineCount = 1;
-        }
-
-        public override IDrawer Dispose()
-        {
-            return drawer;
+            lineCount--;
         }
     }
+
+    //class AddGraphicsBorder : GraphicsDrawer
+    //{
+    //    IDrawer drawer;
+
+    //    public AddGraphicsBorder(IDrawer drawer, DataGridView dataGridView) : base(dataGridView)
+    //    {
+    //        this.drawer = drawer;
+    //    }
+
+    //    public override void DrawBorder(IMatrix matrix)
+    //    {
+            
+    //    }
+
+    //    public override IDrawer Dispose()
+    //    {
+    //        return drawer;
+    //    }
+    //}
 }

@@ -7,7 +7,7 @@ namespace VisualizationMatrices
     {
 
         IDrawer drawer;
-        IDrawer graphicsDrawer;
+        GraphicsDrawer graphicsDrawer;
 
         //Border bord;
 
@@ -41,12 +41,19 @@ namespace VisualizationMatrices
             if (checkBox.Checked)
             {
                 drawer = new AddConsoleBorder(drawer, textBox);
-                graphicsDrawer = new AddGraphicsBorder(graphicsDrawer, dataGridView);
+                graphicsDrawer.AddBorder();
+                
             }
             else
             {
+                // проверка на декоратор
+                //drawer = new AddConsoleBorder(drawer, textBox);
+                //graphicsDrawer.AddBorder();
+
                 drawer = drawer.Dispose();
-                graphicsDrawer = new GraphicsDrawer(dataGridView);
+                graphicsDrawer.DelBorder();
+
+                //graphicsDrawer.Dispose();
             }
         }
 
