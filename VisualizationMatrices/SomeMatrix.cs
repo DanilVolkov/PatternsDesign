@@ -108,28 +108,33 @@ namespace VisualizationMatrices
             }
         }
 
-        public void Draw(IDrawer drawer)
+        public void Draw(IDrawer drawer, IMatrix obj = null)
         {
-            drawer.BeginDraw(this);
-            drawer.DrawBorder(this);
-            for (int row = 0; row < this.CountRows; row++)
+            if (obj is null)
             {
-                drawer.BeginDrawRow(this, row);
-                for (int col = 0; col < this.CountColumns; col++)
+                obj = this;
+            }
+
+            drawer.BeginDraw(obj);
+            drawer.DrawBorder(obj);
+            for (int row = 0; row < obj.CountRows; row++)
+            {
+                drawer.BeginDrawRow(obj, row);
+                for (int col = 0; col < obj.CountColumns; col++)
                 {
-                    if (!Condition(this, row, col)) continue;
-                    drawer.BeginDrawItem(this, row, col);
-                    drawer.DrawItemBorder(this, row, col);
-                    drawer.DrawItem(this, row, col);
-                    drawer.EndDrawItem(this, row, col);
+                    if (!Condition(obj, row, col)) continue;
+                    drawer.BeginDrawItem(obj, row, col);
+                    drawer.DrawItemBorder(obj, row, col);
+                    drawer.DrawItem(obj, row, col);
+                    drawer.EndDrawItem(obj, row, col);
 
                 }
-                drawer.EndDrawRow(this, row);
+                drawer.EndDrawRow(obj, row);
             }
-            drawer.EndDraw(this);
+            drawer.EndDraw(obj);
         }
 
-        protected abstract bool Condition(SomeMatrix someMatrix, int row, int col);
+        protected abstract bool Condition(IMatrix someMatrix, int row, int col);
     }
 }
 

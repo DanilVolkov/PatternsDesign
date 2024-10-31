@@ -110,6 +110,7 @@
             // 
             // renum
             // 
+            renum.Enabled = false;
             renum.Location = new Point(17, 397);
             renum.Name = "renum";
             renum.Size = new Size(277, 34);
@@ -120,6 +121,7 @@
             // 
             // recover
             // 
+            recover.Enabled = false;
             recover.Location = new Point(314, 397);
             recover.Name = "recover";
             recover.Size = new Size(309, 34);

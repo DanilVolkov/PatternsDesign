@@ -4,7 +4,7 @@ namespace VisualizationMatrices
 {
     class InitMatrix
     {
-        public static void FillMatrix(SomeMatrix matrix, int countNoZero, int maxValue)
+        public static void FillMatrix(IMatrix matrix, int countNoZero, int maxValue)
         {
             int countRows = matrix.CountRows;
             int countColumns = matrix.CountColumns;

@@ -62,9 +62,9 @@ namespace VisualizationMatrices
 
         public int CountColumns => matrix.CountColumns;
 
-        public void Draw(IDrawer drawer)
+        public void Draw(IDrawer drawer, IMatrix obj = null)
         {
-            matrix.Draw(drawer); // придумать, что с выводом
+            matrix.Draw(drawer, this);
         }
 
         public int GetItem(int row, int column)
