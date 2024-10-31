@@ -34,12 +34,14 @@
             checkBoxEdge = new CheckBox();
             textBox = new TextBox();
             dataGridView = new DataGridView();
+            renum = new Button();
+            recover = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
             // btnMatrix
             // 
-            btnMatrix.Location = new Point(16, 380);
+            btnMatrix.Location = new Point(16, 441);
             btnMatrix.Name = "btnMatrix";
             btnMatrix.Size = new Size(278, 34);
             btnMatrix.TabIndex = 0;
@@ -49,7 +51,7 @@
             // 
             // btnSparseMatrix
             // 
-            btnSparseMatrix.Location = new Point(314, 380);
+            btnSparseMatrix.Location = new Point(314, 441);
             btnSparseMatrix.Name = "btnSparseMatrix";
             btnSparseMatrix.Size = new Size(309, 34);
             btnSparseMatrix.TabIndex = 1;
@@ -60,7 +62,7 @@
             // checkBoxEdge
             // 
             checkBoxEdge.AutoSize = true;
-            checkBoxEdge.Location = new Point(652, 384);
+            checkBoxEdge.Location = new Point(652, 445);
             checkBoxEdge.Name = "checkBoxEdge";
             checkBoxEdge.Size = new Size(185, 29);
             checkBoxEdge.TabIndex = 2;
@@ -106,11 +108,33 @@
             dataGridView.CellFormatting += dataGridView_CellFormatting;
             dataGridView.SelectionChanged += dataGridView_SelectionChanged;
             // 
+            // renum
+            // 
+            renum.Location = new Point(17, 397);
+            renum.Name = "renum";
+            renum.Size = new Size(277, 34);
+            renum.TabIndex = 6;
+            renum.Text = "Перенумеровать";
+            renum.UseVisualStyleBackColor = true;
+            renum.Click += renum_Click;
+            // 
+            // recover
+            // 
+            recover.Location = new Point(314, 397);
+            recover.Name = "recover";
+            recover.Size = new Size(309, 34);
+            recover.TabIndex = 7;
+            recover.Text = "Восстановить";
+            recover.UseVisualStyleBackColor = true;
+            recover.Click += recover_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(860, 443);
+            ClientSize = new Size(860, 503);
+            Controls.Add(recover);
+            Controls.Add(renum);
             Controls.Add(dataGridView);
             Controls.Add(textBox);
             Controls.Add(checkBoxEdge);
@@ -130,5 +154,7 @@
         private CheckBox checkBoxEdge;
         private TextBox textBox;
         private DataGridView dataGridView;
+        private Button renum;
+        private Button recover;
     }
 }
