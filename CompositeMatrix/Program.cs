@@ -32,7 +32,7 @@ InitMatrixValue(matrix6, 6);
 PrintMatrix(matrix6);
 
 Console.WriteLine("Matrix 7:");
-Matrix matrix7 = new Matrix(1, 1);
+Matrix matrix7 = new Matrix(2, 1);
 InitMatrixValue(matrix7, 7);
 PrintMatrix(matrix7);
 
@@ -60,9 +60,12 @@ Console.WriteLine("Matrix group 3 modify:");
 PrintMatrix(matrix_group3);
 
 Console.WriteLine("Matrix group 4:");
-VGroupMatrices matrix_group4 = new VGroupMatrices(matrix_group1, matrix_group2, matrix7);
+VGroupMatrices matrix_group4 = new VGroupMatrices(matrix_group1, matrix_group2);
 PrintMatrix(matrix_group4);
-//Console.WriteLine(matrix_group4.GetItem(10, 0));
+
+Console.WriteLine("Matrix group 4 modify:");
+matrix_group4.AddMatrix(matrix7);
+PrintMatrix(matrix_group4);
 
 
 void InitMatrixValue(IMatrix matrix, int value)

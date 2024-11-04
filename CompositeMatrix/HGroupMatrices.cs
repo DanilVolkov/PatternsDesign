@@ -8,7 +8,7 @@ namespace CompositeMatrix
 {
     class HGroupMatrices : IMatrix
     {
-        List<IMatrix> matrices;
+        protected List<IMatrix> matrices;
 
         public HGroupMatrices(params IMatrix[] matrices)
         {
@@ -20,11 +20,10 @@ namespace CompositeMatrix
             }
         }
 
-        public void AddMatrix(IMatrix matrix)
+        public virtual void AddMatrix(IMatrix matrix)
         {
             matrices.Add(matrix);
         }
-
 
         public virtual int CountRows
         {
@@ -39,7 +38,6 @@ namespace CompositeMatrix
                         result = matrix.CountRows;
                     }
                 }
-
                 return result;
             }
         }
@@ -63,7 +61,7 @@ namespace CompositeMatrix
         {
             var currentObjects = GetMatrixColumn(row, column);
             int currentColumn = currentObjects.Item1;
-            IMatrix currentMatrix = currentObjects.Item2;
+            IMatrix currentMatrix = matrices[currentObjects.Item2];
 
             if (row >= currentMatrix.CountRows)
                 return -1;
@@ -76,7 +74,7 @@ namespace CompositeMatrix
         {
             var currentObjects = GetMatrixColumn(row, column);
             int currentColumn = currentObjects.Item1;
-            IMatrix currentMatrix = currentObjects.Item2;
+            IMatrix currentMatrix = matrices[currentObjects.Item2];
 
             if (row >= currentMatrix.CountRows)
                 throw new IndexOutOfRangeException("Index out of range");
@@ -89,15 +87,16 @@ namespace CompositeMatrix
             return true;
         }
 
-        protected (int, IMatrix) GetMatrixColumn(int row, int column)
+        private (int, int) GetMatrixColumn(int row, int column)
         {
-            IMatrix currentMatrix = matrices[0];
             int currentColumn = 0;
             int previousColumn = 0;
+            int index = 0;
 
             //как сделать чтобы CountColumns обращался не к переопределенному свойству
             //if (row < 0 || column < 0 || row >= CountRows || column >= CountColumns)
             //    throw new IndexOutOfRangeException("Index out of range");
+
             if (row < 0 || column < 0)
                 throw new IndexOutOfRangeException("Index out of range");
 
@@ -107,12 +106,12 @@ namespace CompositeMatrix
                 currentColumn += matrices[i].CountColumns;
                 if (column < currentColumn)
                 {
-                    currentMatrix = matrices[i];
+                    index = i;
                     break;
                 }
             }
             currentColumn = column - previousColumn;
-            return (currentColumn, currentMatrix);
+            return (currentColumn, index);
         }
     }
 }
