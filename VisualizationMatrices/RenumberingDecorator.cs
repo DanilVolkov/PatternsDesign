@@ -62,11 +62,6 @@ namespace VisualizationMatrices
 
         public int CountColumns => matrix.CountColumns;
 
-        //public void Draw(IDrawer drawer, IMatrix obj = null)
-        //{
-        //    matrix.Draw(drawer, this);
-        //}
-
         public int GetItem(int row, int column)
         {
             return matrix.GetItem(redefinition_rows[row], redefinition_columns[column]);
@@ -80,6 +75,11 @@ namespace VisualizationMatrices
         public IMatrix Recover()
         {
             return matrix;
+        }
+
+        public bool IsComposite()
+        {
+            return false;
         }
     }
 }

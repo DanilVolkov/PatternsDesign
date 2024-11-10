@@ -12,14 +12,12 @@ namespace VisualizationMatrices
         {
             drawer.BeginDraw(matrix);
             drawer.DrawBorder(matrix);
-            // разделить
             for (int row = 0; row < matrix.CountRows; row++)
             {
                 drawer.BeginDrawRow(matrix, row);
                 for (int col = 0; col < matrix.CountColumns; col++)
                 {
                     if (!Condition(matrix, row, col)) continue;
-                    // разделить
                     drawer.BeginDrawItem(matrix, row, col);
                     drawer.DrawItemBorder(matrix, row, col);
                     drawer.DrawItem(matrix, row, col);

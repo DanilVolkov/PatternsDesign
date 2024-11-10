@@ -133,24 +133,4 @@ namespace VisualizationMatrices
             lineCount--;
         }
     }
-
-    //class AddGraphicsBorder : GraphicsDrawer
-    //{
-    //    IDrawer drawer;
-
-    //    public AddGraphicsBorder(IDrawer drawer, DataGridView dataGridView) : base(dataGridView)
-    //    {
-    //        this.drawer = drawer;
-    //    }
-
-    //    public override void DrawBorder(IMatrix matrix)
-    //    {
-            
-    //    }
-
-    //    public override IDrawer Dispose()
-    //    {
-    //        return drawer;
-    //    }
-    //}
 }

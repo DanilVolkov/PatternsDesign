@@ -11,6 +11,6 @@
 
         int GetItem(int row, int column);
 
-       // void Draw(IDrawer drawer, IMatrix obj = null);
+        bool IsComposite();
     }
 }

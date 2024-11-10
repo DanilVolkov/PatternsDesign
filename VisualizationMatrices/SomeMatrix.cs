@@ -108,35 +108,10 @@ namespace VisualizationMatrices
             }
         }
 
-        //public void Draw(IDrawer drawer, IMatrix obj = null)
-        //{
-        //    if (obj is null)
-        //    {
-        //        obj = this;
-        //    }
-
-        //    drawer.BeginDraw(obj);
-        //    drawer.DrawBorder(obj);
-        //    // разделить
-        //    for (int row = 0; row < obj.CountRows; row++)
-        //    {
-        //        drawer.BeginDrawRow(obj, row);
-        //        for (int col = 0; col < obj.CountColumns; col++)
-        //        {
-        //            if (!Condition(obj, row, col)) continue;
-        //            // разделить
-        //            drawer.BeginDrawItem(obj, row, col);
-        //            drawer.DrawItemBorder(obj, row, col);
-        //            drawer.DrawItem(obj, row, col);
-        //            drawer.EndDrawItem(obj, row, col);
-
-        //        }
-        //        drawer.EndDrawRow(obj, row);
-        //    }
-        //    drawer.EndDraw(obj);
-        //}
-
-        //protected abstract bool Condition(IMatrix someMatrix, int row, int col);
+        public bool IsComposite()
+        {
+            return false;
+        }
     }
 }
 
