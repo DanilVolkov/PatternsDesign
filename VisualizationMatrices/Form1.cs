@@ -11,15 +11,19 @@ namespace VisualizationMatrices
         IDrawer drawer;
         GraphicsDrawer graphicsDrawer;
         IMatrix matrix;
+        DrawMatrix drawMatrix = new DrawMatrix();
+        DrawSparseMatix sparseMatrix = new DrawSparseMatix();
         RenumberingDecorator matrix_dec;
         bool is_matrix = false;
 
-        //Border bord;
+        // реализовать требования по цвету и границам в отдельном классе
+        // для разреженных матриц - зеленый фон, а для остальных белый
 
         public Form1()
         {
             InitializeComponent();
             Program.form = this;
+
             drawer = new ConsoleDrawer(textBox);
             graphicsDrawer = new GraphicsDrawer(dataGridView);
         }
@@ -30,8 +34,9 @@ namespace VisualizationMatrices
             recover.Enabled = true;
             matrix = new Matrix(3, 3);
             InitMatrix.FillMatrix(matrix, 5, 10);
-            matrix.Draw(drawer);
-            matrix.Draw(graphicsDrawer);
+            drawMatrix.Draw(matrix, drawer);
+            drawMatrix.Draw(matrix, graphicsDrawer);
+
             is_matrix = false;
         }
 
@@ -41,8 +46,9 @@ namespace VisualizationMatrices
             recover.Enabled = true;
             matrix = new SparseMatrix(3, 3);
             InitMatrix.FillMatrix(matrix, 5, 10);
-            matrix.Draw(drawer);
-            matrix.Draw(graphicsDrawer);
+            sparseMatrix.Draw(matrix, drawer);
+            sparseMatrix.Draw(matrix, graphicsDrawer);
+
             is_matrix = true;
         }
 
@@ -53,7 +59,6 @@ namespace VisualizationMatrices
             {
                 drawer = new AddConsoleBorder(drawer, textBox);
                 graphicsDrawer.AddBorder();
-
             }
             else
             {
@@ -63,8 +68,6 @@ namespace VisualizationMatrices
 
                 drawer = drawer.Dispose();
                 graphicsDrawer.DelBorder();
-
-                //graphicsDrawer.Dispose();
             }
         }
 
@@ -84,8 +87,16 @@ namespace VisualizationMatrices
         private void recover_Click(object sender, EventArgs e)
         {
             matrix = matrix_dec.Recover();
-            matrix.Draw(drawer);
-            matrix.Draw(graphicsDrawer);            
+            if (!is_matrix)
+            {
+                drawMatrix.Draw(matrix, drawer);
+                drawMatrix.Draw(matrix, graphicsDrawer);
+            }
+            else
+            {
+                sparseMatrix.Draw(matrix, drawer);
+                sparseMatrix.Draw(matrix, graphicsDrawer);
+            }
         }
 
         private void renum_Click(object sender, EventArgs e)
@@ -93,8 +104,21 @@ namespace VisualizationMatrices
             matrix_dec = new RenumberingDecorator(matrix);
             matrix_dec.RenumerateColumns();
             matrix_dec.RenumerateRows();
-            matrix_dec.Draw(drawer);
-            matrix_dec.Draw(graphicsDrawer);
+
+            if (!is_matrix)
+            {
+                drawMatrix.Draw(matrix_dec, drawer);
+                drawMatrix.Draw(matrix_dec, graphicsDrawer);
+            }
+            else
+            {
+                sparseMatrix.Draw(matrix_dec, drawer);
+                sparseMatrix.Draw(matrix_dec, graphicsDrawer);
+            }
+
+            
         }
+
+
     }
 }

@@ -41,7 +41,7 @@
             // 
             // btnMatrix
             // 
-            btnMatrix.Location = new Point(16, 441);
+            btnMatrix.Location = new Point(11, 449);
             btnMatrix.Name = "btnMatrix";
             btnMatrix.Size = new Size(278, 34);
             btnMatrix.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             // btnSparseMatrix
             // 
-            btnSparseMatrix.Location = new Point(314, 441);
+            btnSparseMatrix.Location = new Point(309, 449);
             btnSparseMatrix.Name = "btnSparseMatrix";
             btnSparseMatrix.Size = new Size(309, 34);
             btnSparseMatrix.TabIndex = 1;
@@ -62,7 +62,7 @@
             // checkBoxEdge
             // 
             checkBoxEdge.AutoSize = true;
-            checkBoxEdge.Location = new Point(652, 445);
+            checkBoxEdge.Location = new Point(647, 453);
             checkBoxEdge.Name = "checkBoxEdge";
             checkBoxEdge.Size = new Size(185, 29);
             checkBoxEdge.TabIndex = 2;
@@ -111,7 +111,7 @@
             // renum
             // 
             renum.Enabled = false;
-            renum.Location = new Point(17, 397);
+            renum.Location = new Point(12, 405);
             renum.Name = "renum";
             renum.Size = new Size(277, 34);
             renum.TabIndex = 6;
@@ -122,7 +122,7 @@
             // recover
             // 
             recover.Enabled = false;
-            recover.Location = new Point(314, 397);
+            recover.Location = new Point(309, 405);
             recover.Name = "recover";
             recover.Size = new Size(309, 34);
             recover.TabIndex = 7;
@@ -134,7 +134,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(860, 503);
+            ClientSize = new Size(860, 504);
             Controls.Add(recover);
             Controls.Add(renum);
             Controls.Add(dataGridView);
