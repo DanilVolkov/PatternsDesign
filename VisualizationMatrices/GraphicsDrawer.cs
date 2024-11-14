@@ -14,6 +14,7 @@ namespace VisualizationMatrices
         DataGridView dataGridView;
         protected int lineCount;
         List<string> borders;
+        Color color = Color.White;
 
         public GraphicsDrawer(DataGridView dataGridView)
         {
@@ -22,6 +23,7 @@ namespace VisualizationMatrices
             lineCount = 0;
             borders = new List<string>();
         }
+
         public void BeginDraw(IMatrix matrix)
         {
             dataGridView.Rows.Clear();
@@ -100,10 +102,10 @@ namespace VisualizationMatrices
                     count++;
                 }
             }
-            if (count > 0)    
-            {   
+            if (count > 0)
+            {
                 e.Handled = true;
-                using (Brush b = new SolidBrush(dataGridView.DefaultCellStyle.BackColor))
+                using (Brush b = new SolidBrush(color))
                 {
                     e.Graphics.FillRectangle(b, e.CellBounds);
                 }
@@ -121,7 +123,23 @@ namespace VisualizationMatrices
                 }
                 e.PaintContent(e.ClipBounds);
             }
+            else
+            {
+                if (e.Value is not null)
+                {
+                    e.Handled = true;
+                    using (Brush b = new SolidBrush(color))
+                    {
+                        e.Graphics.FillRectangle(b, e.CellBounds);
+                    }
+                    e.PaintContent(e.ClipBounds);
+                }
+                
+            }
         }
+
+        public void SetColor(Color color) => this.color = color;
+
 
         public void AddBorder()
         {

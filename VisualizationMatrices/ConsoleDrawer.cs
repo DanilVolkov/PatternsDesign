@@ -42,10 +42,7 @@ namespace VisualizationMatrices
 
         public void DrawItemBorder(IMatrix matrix, int row, int col) { }
 
-        public void EndDraw(IMatrix matrix) 
-        {
-            
-        }
+        public void EndDraw(IMatrix matrix) { }
 
         public void EndDrawItem(IMatrix somatrixmeMatrix, int row, int col) { }
 
@@ -63,6 +60,8 @@ namespace VisualizationMatrices
         }
 
         public virtual IDrawer Dispose() => this;
+
+        public void SetColor(Color color) { }
     }
 
     class AddConsoleBorder : ConsoleDrawer

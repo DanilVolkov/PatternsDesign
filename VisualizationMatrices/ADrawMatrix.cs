@@ -11,6 +11,14 @@ namespace VisualizationMatrices
         public void Draw(IMatrix matrix, IDrawer drawer)
         {
             drawer.BeginDraw(matrix);
+            if (IsSparseMatrix())
+            {
+                drawer.SetColor(Color.LightGreen);
+            }
+            else
+            {
+                drawer.SetColor(Color.White);
+            }
             drawer.DrawBorder(matrix);
             for (int row = 0; row < matrix.CountRows; row++)
             {
@@ -29,6 +37,8 @@ namespace VisualizationMatrices
             drawer.EndDraw(matrix);
         }
 
+        protected abstract bool IsSparseMatrix();
+
         protected abstract bool Condition(IMatrix matrix, int row, int col);
     }
 
@@ -37,6 +47,11 @@ namespace VisualizationMatrices
         protected override bool Condition(IMatrix matrix, int row, int col)
         {
             return true;
+        }
+
+        protected override bool IsSparseMatrix()
+        {
+            return false;
         }
     }
 
@@ -52,6 +67,11 @@ namespace VisualizationMatrices
             {
                 return true;
             }
+        }
+
+        protected override bool IsSparseMatrix()
+        {
+            return true;
         }
     }
 }

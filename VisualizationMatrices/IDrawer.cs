@@ -17,6 +17,7 @@ namespace VisualizationMatrices
         void EndDrawRow(IMatrix matrix, int row);
         void DrawBorder(IMatrix matrix);
         void EndDraw(IMatrix matrix);
+        void SetColor(Color color);
         IDrawer Dispose();
     }
 }

@@ -36,12 +36,22 @@
             dataGridView = new DataGridView();
             renum = new Button();
             recover = new Button();
+            btnHGroupMatrix = new Button();
+            lblVGroup = new Label();
+            btnHGroupSparseMatrix = new Button();
+            lblHGroup = new Label();
+            btnVGroupMatrix = new Button();
+            btnVGroupSparseMatrix = new Button();
+            label1 = new Label();
+            lblChange = new Label();
+            btnChange = new Button();
+            btnCancel = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
             // btnMatrix
             // 
-            btnMatrix.Location = new Point(11, 449);
+            btnMatrix.Location = new Point(15, 670);
             btnMatrix.Name = "btnMatrix";
             btnMatrix.Size = new Size(278, 34);
             btnMatrix.TabIndex = 0;
@@ -51,7 +61,7 @@
             // 
             // btnSparseMatrix
             // 
-            btnSparseMatrix.Location = new Point(309, 449);
+            btnSparseMatrix.Location = new Point(313, 670);
             btnSparseMatrix.Name = "btnSparseMatrix";
             btnSparseMatrix.Size = new Size(309, 34);
             btnSparseMatrix.TabIndex = 1;
@@ -62,7 +72,7 @@
             // checkBoxEdge
             // 
             checkBoxEdge.AutoSize = true;
-            checkBoxEdge.Location = new Point(647, 453);
+            checkBoxEdge.Location = new Point(651, 674);
             checkBoxEdge.Name = "checkBoxEdge";
             checkBoxEdge.Size = new Size(185, 29);
             checkBoxEdge.TabIndex = 2;
@@ -111,7 +121,7 @@
             // renum
             // 
             renum.Enabled = false;
-            renum.Location = new Point(12, 405);
+            renum.Location = new Point(16, 626);
             renum.Name = "renum";
             renum.Size = new Size(277, 34);
             renum.TabIndex = 6;
@@ -122,7 +132,7 @@
             // recover
             // 
             recover.Enabled = false;
-            recover.Location = new Point(309, 405);
+            recover.Location = new Point(313, 626);
             recover.Name = "recover";
             recover.Size = new Size(309, 34);
             recover.TabIndex = 7;
@@ -130,11 +140,119 @@
             recover.UseVisualStyleBackColor = true;
             recover.Click += recover_Click;
             // 
+            // btnHGroupMatrix
+            // 
+            btnHGroupMatrix.Location = new Point(15, 475);
+            btnHGroupMatrix.Name = "btnHGroupMatrix";
+            btnHGroupMatrix.Size = new Size(278, 34);
+            btnHGroupMatrix.TabIndex = 8;
+            btnHGroupMatrix.Text = "Генерация обычной группы";
+            btnHGroupMatrix.UseVisualStyleBackColor = true;
+            btnHGroupMatrix.Click += btnHGroupMatrix_Click;
+            // 
+            // lblVGroup
+            // 
+            lblVGroup.AutoSize = true;
+            lblVGroup.Location = new Point(132, 443);
+            lblVGroup.Name = "lblVGroup";
+            lblVGroup.Size = new Size(367, 25);
+            lblVGroup.TabIndex = 9;
+            lblVGroup.Text = "Генерация горизонтальной группы матриц";
+            // 
+            // btnHGroupSparseMatrix
+            // 
+            btnHGroupSparseMatrix.Location = new Point(311, 475);
+            btnHGroupSparseMatrix.Name = "btnHGroupSparseMatrix";
+            btnHGroupSparseMatrix.Size = new Size(311, 34);
+            btnHGroupSparseMatrix.TabIndex = 10;
+            btnHGroupSparseMatrix.Text = "Генерация разреженной группы";
+            btnHGroupSparseMatrix.UseVisualStyleBackColor = true;
+            btnHGroupSparseMatrix.Click += btnHGroupSparseMatrix_Click;
+            // 
+            // lblHGroup
+            // 
+            lblHGroup.AutoSize = true;
+            lblHGroup.Location = new Point(132, 522);
+            lblHGroup.Name = "lblHGroup";
+            lblHGroup.Size = new Size(366, 25);
+            lblHGroup.TabIndex = 11;
+            lblHGroup.Text = "Генеризация вертикальной группы матриц";
+            // 
+            // btnVGroupMatrix
+            // 
+            btnVGroupMatrix.Location = new Point(19, 558);
+            btnVGroupMatrix.Name = "btnVGroupMatrix";
+            btnVGroupMatrix.Size = new Size(274, 34);
+            btnVGroupMatrix.TabIndex = 12;
+            btnVGroupMatrix.Text = "Генерация обычной группы";
+            btnVGroupMatrix.UseVisualStyleBackColor = true;
+            btnVGroupMatrix.Click += btnVGroupMatrix_Click;
+            // 
+            // btnVGroupSparseMatrix
+            // 
+            btnVGroupSparseMatrix.Location = new Point(313, 558);
+            btnVGroupSparseMatrix.Name = "btnVGroupSparseMatrix";
+            btnVGroupSparseMatrix.Size = new Size(309, 34);
+            btnVGroupSparseMatrix.TabIndex = 13;
+            btnVGroupSparseMatrix.Text = "Генерация разреженной группы";
+            btnVGroupSparseMatrix.UseVisualStyleBackColor = true;
+            btnVGroupSparseMatrix.Click += btnVGroupSparseMatrix_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(16, 598);
+            label1.Name = "label1";
+            label1.Size = new Size(614, 25);
+            label1.TabIndex = 14;
+            label1.Text = "______________________________________________________________________________________";
+            // 
+            // lblChange
+            // 
+            lblChange.AutoSize = true;
+            lblChange.Location = new Point(193, 372);
+            lblChange.Name = "lblChange";
+            lblChange.Size = new Size(249, 25);
+            lblChange.TabIndex = 15;
+            lblChange.Text = "Механизм отмены операций";
+            // 
+            // btnChange
+            // 
+            btnChange.Enabled = false;
+            btnChange.Location = new Point(19, 407);
+            btnChange.Name = "btnChange";
+            btnChange.Size = new Size(274, 34);
+            btnChange.TabIndex = 16;
+            btnChange.Text = "Изменить";
+            btnChange.UseVisualStyleBackColor = true;
+            btnChange.Click += btnChange_Click;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Enabled = false;
+            btnCancel.Location = new Point(313, 406);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(309, 34);
+            btnCancel.TabIndex = 17;
+            btnCancel.Text = "Отменить";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(860, 504);
+            ClientSize = new Size(860, 716);
+            Controls.Add(btnCancel);
+            Controls.Add(btnChange);
+            Controls.Add(lblChange);
+            Controls.Add(label1);
+            Controls.Add(btnVGroupSparseMatrix);
+            Controls.Add(btnVGroupMatrix);
+            Controls.Add(lblHGroup);
+            Controls.Add(btnHGroupSparseMatrix);
+            Controls.Add(lblVGroup);
+            Controls.Add(btnHGroupMatrix);
             Controls.Add(recover);
             Controls.Add(renum);
             Controls.Add(dataGridView);
@@ -158,5 +276,15 @@
         private DataGridView dataGridView;
         private Button renum;
         private Button recover;
+        private Button btnHGroupMatrix;
+        private Label lblVGroup;
+        private Button btnHGroupSparseMatrix;
+        private Label lblHGroup;
+        private Button btnVGroupMatrix;
+        private Button btnVGroupSparseMatrix;
+        private Label label1;
+        private Label lblChange;
+        private Button btnChange;
+        private Button btnCancel;
     }
 }

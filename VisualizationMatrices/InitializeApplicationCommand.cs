@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace VisualizationMatrices
 {
-    interface IProperties
+    class InitializeApplicationCommand : ACommand
     {
-        public Color Colors { get; set; }
-        public int Border { get; set; }
+        public override void Undo() { }
+
+        protected override void DoExecute() { }
     }
 }
