@@ -123,11 +123,12 @@ namespace VisualizationMatrices
 
             if (row >= currentMatrix.CountRows)
             {
-                drawer.DrawItem(0, row, col, countColumns);
+                //drawer.DrawItem(0, row, col, countColumns);
+                currentMatrix.Draw(value, row, col, drawer, countColumns);
             }
             else
             {
-                currentMatrix.Draw(value, row, currentColumn, drawer, countColumns);
+                currentMatrix.Draw(value, row, col, drawer, countColumns);
             }
             
             

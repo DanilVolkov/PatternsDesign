@@ -39,9 +39,9 @@ namespace VisualizationMatrices
             base.SetItem(column, row, value);
         }
 
-        public override void Draw(int value, int row, int col, IDrawer drawer, int countColumns)
-        {
-            base.Draw(value, col, row, drawer, countColumns);
-        }
+        //public override void Draw(int value, int row, int col, IDrawer drawer, int countColumns)
+        //{
+        //    base.Draw(value, row, col, drawer, countColumns);
+        //}
     }
 }

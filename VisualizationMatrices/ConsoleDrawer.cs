@@ -16,7 +16,10 @@ namespace VisualizationMatrices
 
         public void BeginDrawItem(IMatrix matrix, int row, int col) { }
 
-        public void BeginDrawRow(IMatrix matrix, int row) { }
+        public void BeginDrawRow(IMatrix matrix, int row)
+        {
+            textBox.Paste(" ");
+        }
 
         public virtual void DrawBorder(IMatrix matrix)
         {
@@ -29,15 +32,16 @@ namespace VisualizationMatrices
 
         public void DrawItem(int value, int row, int col, int countColumns)
         {
-            Console.WriteLine($"row: {row}, col: {col}, value: {value}");
-            if (col == countColumns - 1)
-            {
-                textBox.Paste(value.ToString());
-            }
-            else
-            {
-                textBox.Paste(value.ToString() + " ");
-            }
+            //Console.WriteLine($"row: {row}, col: {col}, value: {value}");
+            textBox.Paste(value.ToString() + " ");
+            //if (col == countColumns - 1)
+            //{
+            //    textBox.Paste(value.ToString());
+            //}
+            //else
+            //{
+            //    textBox.Paste(value.ToString() + " ");
+            //}
         }
 
         public void DrawItemBorder(IMatrix matrix, int row, int col) { }

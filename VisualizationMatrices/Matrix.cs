@@ -9,6 +9,7 @@ namespace VisualizationMatrices
 
         public override void Draw(int value, int row, int col, IDrawer drawer, int countColumns)
         {
+
             drawer.DrawItem(value, row, col, countColumns);
         }        
 
