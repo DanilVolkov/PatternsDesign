@@ -27,17 +27,17 @@ namespace VisualizationMatrices
             }
         }
 
-        public void DrawItem(IMatrix matrix, int row, int col)
+        public void DrawItem(int value, int row, int col, int countColumns)
         {
-            if (col == matrix.CountColumns - 1)
+            Console.WriteLine($"row: {row}, col: {col}, value: {value}");
+            if (col == countColumns - 1)
             {
-                textBox.Paste(matrix.GetItem(row, col).ToString());
+                textBox.Paste(value.ToString());
             }
             else
             {
-                textBox.Paste(matrix.GetItem(row, col).ToString() + " ");
+                textBox.Paste(value.ToString() + " ");
             }
-            
         }
 
         public void DrawItemBorder(IMatrix matrix, int row, int col) { }

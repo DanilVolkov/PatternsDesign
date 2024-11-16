@@ -18,9 +18,24 @@ namespace VisualizationMatrices
             this.newValue = newValue;
         }
 
+        private WriteValueToMatrixCommand(IMatrix matrix, int row, int column, int newValue, int prevValue)
+        {
+            this.matrix = matrix;
+            this.row = row;
+            this.column = column;
+            this.newValue = newValue;
+            this.prevValue = prevValue;
+        }
+
+
         public override void Undo()
         {
             matrix.SetItem(row, column, prevValue);
+        }
+
+        public override ICommand Copy()
+        {
+            return new WriteValueToMatrixCommand(matrix, row, column, newValue, prevValue);
         }
 
         protected override void DoExecute()

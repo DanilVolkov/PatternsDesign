@@ -12,5 +12,9 @@
         int GetItem(int row, int column);
 
         bool IsComposite();
+
+        void Draw(int value, int row, int col, IDrawer drawer, int countColumns);
+
+
     }
 }

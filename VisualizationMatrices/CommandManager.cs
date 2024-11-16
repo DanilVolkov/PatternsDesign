@@ -27,7 +27,7 @@ namespace VisualizationMatrices
         public void Registry(ICommand command)
         {
             Instance();
-            commands.Push(command);
+            commands.Push(command.Copy());
             UpdateStack();
         }
 
@@ -44,7 +44,7 @@ namespace VisualizationMatrices
 
         private void UpdateStack()
         {
-            if (commands.Count > 2)
+            if (commands.Count > 10)
             {
                 commands.Pop();
             }

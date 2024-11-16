@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -112,6 +113,24 @@ namespace VisualizationMatrices
             }
             currentColumn = column - previousColumn;
             return (currentColumn, index);
+        }
+
+        public virtual void Draw(int value, int row, int col, IDrawer drawer, int countColumns)
+        {
+            var currentObjects = GetMatrixColumn(row, col);
+            int currentColumn = currentObjects.Item1;
+            IMatrix currentMatrix = matrices[currentObjects.Item2];
+
+            if (row >= currentMatrix.CountRows)
+            {
+                drawer.DrawItem(0, row, col, countColumns);
+            }
+            else
+            {
+                currentMatrix.Draw(value, row, currentColumn, drawer, countColumns);
+            }
+            
+            
         }
     }
 }

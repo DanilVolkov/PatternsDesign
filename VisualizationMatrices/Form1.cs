@@ -14,7 +14,7 @@ namespace VisualizationMatrices
         HGroupMatrices ghMatrix1, ghMatrix2;
         VGroupMatrices ghMatrix3;
         DrawMatrix drawMatrix = new DrawMatrix();
-        DrawSparseMatix sparseMatrix = new DrawSparseMatix();
+        //DrawSparseMatix sparseMatrix = new DrawSparseMatix();
         RenumberingDecorator matrix_dec;
         bool is_matrix = false;
         bool is_v_group = false;
@@ -32,11 +32,11 @@ namespace VisualizationMatrices
 
             matrix1 = new Matrix(2, 2);
             matrix2 = new Matrix(3, 3);
-            matrix3 = new SparseMatrix(5, 1);
+            matrix3 = new SparseMatrix(2, 2);
             matrix4 = new SparseMatrix(1, 1);
             matrix5 = new SparseMatrix(2, 4);
             matrix6 = new Matrix(2, 3);
-            matrix7 = new Matrix(2, 1);
+            matrix7 = new SparseMatrix(2, 2);
 
             InitMatrixValue(matrix1, 1);
             InitMatrixValue(matrix2, 2);
@@ -45,13 +45,16 @@ namespace VisualizationMatrices
             InitMatrixValue(matrix5, 5);
             InitMatrixValue(matrix6, 6);
             InitMatrixValue(matrix7, 7);
+            matrix7.SetItem(0, 0, 0);
+            matrix3.SetItem(0, 1, 0);
+
 
             ghMatrix1 = new HGroupMatrices(matrix1, matrix2, matrix3);
-            ghMatrix2 = new HGroupMatrices(matrix5, matrix6);
+            //ghMatrix2 = new HGroupMatrices(matrix5, matrix6);
             ghMatrix1.AddMatrix(matrix4);
 
-            ghMatrix3 = new VGroupMatrices(ghMatrix1, ghMatrix2);
-            ghMatrix3.AddMatrix(matrix7);
+            ghMatrix3 = new VGroupMatrices(ghMatrix1);
+            //ghMatrix3.AddMatrix(matrix7);
 
             drawer = new ConsoleDrawer(textBox);
             graphicsDrawer = new GraphicsDrawer(dataGridView);
@@ -77,8 +80,8 @@ namespace VisualizationMatrices
             ChangeEnabled(true);
             matrix = new SparseMatrix(3, 3);
             InitMatrix.FillMatrix(matrix, 5, 10);
-            sparseMatrix.Draw(matrix, drawer);
-            sparseMatrix.Draw(matrix, graphicsDrawer);
+            drawMatrix.Draw(matrix, drawer);
+            drawMatrix.Draw(matrix, graphicsDrawer);
 
             is_matrix = true;
             is_h_group = false;
@@ -185,8 +188,8 @@ namespace VisualizationMatrices
         private void btnHGroupSparseMatrix_Click(object sender, EventArgs e)
         {
             ChangeEnabled(true);
-            sparseMatrix.Draw(ghMatrix1, drawer);
-            sparseMatrix.Draw(ghMatrix1, graphicsDrawer);
+            drawMatrix.Draw(ghMatrix1, drawer);
+            drawMatrix.Draw(ghMatrix1, graphicsDrawer);
             is_h_group = true;
             is_v_group = false;
             is_matrix = true;
@@ -205,8 +208,8 @@ namespace VisualizationMatrices
         private void btnVGroupSparseMatrix_Click(object sender, EventArgs e)
         {
             ChangeEnabled(true);
-            sparseMatrix.Draw(ghMatrix3, drawer);
-            sparseMatrix.Draw(ghMatrix3, graphicsDrawer);
+            drawMatrix.Draw(ghMatrix3, drawer);
+            drawMatrix.Draw(ghMatrix3, graphicsDrawer);
             is_h_group = false;
             is_v_group = true;
             is_matrix = true;
@@ -214,23 +217,24 @@ namespace VisualizationMatrices
 
         private void btnChange_Click(object sender, EventArgs e)
         {
+            Random rand = new Random();
             if (is_h_group)
             {
-                ACommand command = new WriteValueToMatrixCommand(ghMatrix1, 0, 0, 21);
+                ACommand command = new WriteValueToMatrixCommand(ghMatrix1, 0, 0, rand.Next(100, 200));
                 command.Execute();
                 CommandManager.Instance().Registry(command);
                 DrawMatrix(ghMatrix1);
             }
             else if (is_v_group)
             {
-                ACommand command = new WriteValueToMatrixCommand(ghMatrix3, 0, 0, 21);
+                ACommand command = new WriteValueToMatrixCommand(ghMatrix3, 0, 0, rand.Next(100, 200));
                 command.Execute();
                 CommandManager.Instance().Registry(command);
                 DrawMatrix(ghMatrix3);
             }
             else
             {
-                ACommand command = new WriteValueToMatrixCommand(matrix, 0, 0, 21);
+                ACommand command = new WriteValueToMatrixCommand(matrix, 0, 0, rand.Next(100, 200));
                 command.Execute();
                 CommandManager.Instance().Registry(command);
                 DrawMatrix(matrix);
@@ -264,8 +268,8 @@ namespace VisualizationMatrices
             }
             else
             {
-                sparseMatrix.Draw(matrix, drawer);
-                sparseMatrix.Draw(matrix, graphicsDrawer);
+                drawMatrix.Draw(matrix, drawer);
+                drawMatrix.Draw(matrix, graphicsDrawer);
             }
         }
 

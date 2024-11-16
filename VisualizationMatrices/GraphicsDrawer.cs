@@ -39,16 +39,59 @@ namespace VisualizationMatrices
 
         public virtual void DrawBorder(IMatrix matrix) { }
 
-        public void DrawItem(IMatrix matrix, int row, int col)
+        public void DrawItem(int value, int row, int col, int countColumns)
         {
+            Console.WriteLine($"row: {row}, col: {col}, value: {value}");
+            //Console.WriteLine("Before:");
+            //List<List<string>> matrix = new List<List<string>>();
+            //for (int i = 0; i < dataGridView.ColumnCount; i++)
+            //{
+            //    matrix.Add(new List<string>());
+            //    for (int j = 0; j < dataGridView.RowCount; j++)
+            //    {
+            //        matrix[i].Add(dataGridView[i, j].Value is null ? " " : dataGridView[i, j].Value.ToString());
+            //    }
+            //}
+
+            //for (int i = 0; i < matrix[0].Count; i++)
+            //{
+            //    for (int j = 0; j < matrix.Count; j++)
+            //    {
+            //        Console.Write(matrix[j][i].ToString() + " ");
+            //    }
+            //    Console.WriteLine();
+            //}
+            //Console.WriteLine();
+
             for (int i = 0; i < dataGridView.ColumnCount; i++)
             {
                 if (dataGridView[i, row].Value is null)
                 {
-                    dataGridView[i, row].Value = matrix.GetItem(row, col);
+                    dataGridView[i, row].Value = value;
                     break;
                 }
             }
+
+            //Console.WriteLine("After:");
+            //matrix = new List<List<string>>();
+            //for (int i = 0; i < dataGridView.ColumnCount; i++)
+            //{
+            //    matrix.Add(new List<string>());
+            //    for (int j = 0; j < dataGridView.RowCount; j++)
+            //    {
+            //        matrix[i].Add(dataGridView[i, j].Value is null ? " " : dataGridView[i, j].Value.ToString());
+            //    }
+            //}
+
+            //for (int i = 0; i < matrix[0].Count; i++)
+            //{
+            //    for (int j = 0; j < matrix.Count; j++)
+            //    {
+            //        Console.Write(matrix[j][i].ToString() + " ");
+            //    }
+            //    Console.WriteLine();
+            //}
+            //Console.WriteLine();
         }
 
         public void DrawItemBorder(IMatrix matrix, int row, int col) { }

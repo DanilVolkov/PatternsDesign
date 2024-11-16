@@ -10,6 +10,7 @@ namespace VisualizationMatrices
     {
         void Execute();
         void Undo();
+        public ICommand Copy();
 
     }
 }

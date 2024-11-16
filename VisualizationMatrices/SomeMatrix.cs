@@ -112,6 +112,8 @@ namespace VisualizationMatrices
         {
             return false;
         }
+
+        public abstract void Draw(int value, int row, int col, IDrawer drawer, int countColumns);
     }
 }
 

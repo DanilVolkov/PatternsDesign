@@ -51,9 +51,10 @@
             // 
             // btnMatrix
             // 
-            btnMatrix.Location = new Point(15, 670);
+            btnMatrix.Location = new Point(10, 402);
+            btnMatrix.Margin = new Padding(2, 2, 2, 2);
             btnMatrix.Name = "btnMatrix";
-            btnMatrix.Size = new Size(278, 34);
+            btnMatrix.Size = new Size(195, 20);
             btnMatrix.TabIndex = 0;
             btnMatrix.Text = "Генерация обычной матрицы";
             btnMatrix.UseVisualStyleBackColor = true;
@@ -61,9 +62,10 @@
             // 
             // btnSparseMatrix
             // 
-            btnSparseMatrix.Location = new Point(313, 670);
+            btnSparseMatrix.Location = new Point(219, 402);
+            btnSparseMatrix.Margin = new Padding(2, 2, 2, 2);
             btnSparseMatrix.Name = "btnSparseMatrix";
-            btnSparseMatrix.Size = new Size(309, 34);
+            btnSparseMatrix.Size = new Size(216, 20);
             btnSparseMatrix.TabIndex = 1;
             btnSparseMatrix.Text = "Генерация разреженной матрицы";
             btnSparseMatrix.UseVisualStyleBackColor = true;
@@ -72,9 +74,10 @@
             // checkBoxEdge
             // 
             checkBoxEdge.AutoSize = true;
-            checkBoxEdge.Location = new Point(651, 674);
+            checkBoxEdge.Location = new Point(456, 404);
+            checkBoxEdge.Margin = new Padding(2, 2, 2, 2);
             checkBoxEdge.Name = "checkBoxEdge";
-            checkBoxEdge.Size = new Size(185, 29);
+            checkBoxEdge.Size = new Size(125, 19);
             checkBoxEdge.TabIndex = 2;
             checkBoxEdge.Text = "Граница матрицы";
             checkBoxEdge.UseVisualStyleBackColor = true;
@@ -82,10 +85,11 @@
             // 
             // textBox
             // 
-            textBox.Location = new Point(482, 12);
+            textBox.Location = new Point(337, 7);
+            textBox.Margin = new Padding(2, 2, 2, 2);
             textBox.Multiline = true;
             textBox.Name = "textBox";
-            textBox.Size = new Size(355, 343);
+            textBox.Size = new Size(250, 207);
             textBox.TabIndex = 4;
             // 
             // dataGridView
@@ -106,14 +110,14 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dataGridView.DefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView.Enabled = false;
-            dataGridView.Location = new Point(16, 12);
+            dataGridView.Location = new Point(11, 7);
+            dataGridView.Margin = new Padding(2, 2, 2, 2);
             dataGridView.Name = "dataGridView";
             dataGridView.ReadOnly = true;
             dataGridView.RowHeadersVisible = false;
             dataGridView.RowHeadersWidth = 62;
             dataGridView.RowTemplate.Height = 33;
-            dataGridView.Size = new Size(377, 343);
+            dataGridView.Size = new Size(264, 206);
             dataGridView.TabIndex = 5;
             dataGridView.CellFormatting += dataGridView_CellFormatting;
             dataGridView.SelectionChanged += dataGridView_SelectionChanged;
@@ -121,9 +125,10 @@
             // renum
             // 
             renum.Enabled = false;
-            renum.Location = new Point(16, 626);
+            renum.Location = new Point(11, 376);
+            renum.Margin = new Padding(2, 2, 2, 2);
             renum.Name = "renum";
-            renum.Size = new Size(277, 34);
+            renum.Size = new Size(194, 20);
             renum.TabIndex = 6;
             renum.Text = "Перенумеровать";
             renum.UseVisualStyleBackColor = true;
@@ -132,9 +137,10 @@
             // recover
             // 
             recover.Enabled = false;
-            recover.Location = new Point(313, 626);
+            recover.Location = new Point(219, 376);
+            recover.Margin = new Padding(2, 2, 2, 2);
             recover.Name = "recover";
-            recover.Size = new Size(309, 34);
+            recover.Size = new Size(216, 20);
             recover.TabIndex = 7;
             recover.Text = "Восстановить";
             recover.UseVisualStyleBackColor = true;
@@ -142,9 +148,10 @@
             // 
             // btnHGroupMatrix
             // 
-            btnHGroupMatrix.Location = new Point(15, 475);
+            btnHGroupMatrix.Location = new Point(10, 285);
+            btnHGroupMatrix.Margin = new Padding(2, 2, 2, 2);
             btnHGroupMatrix.Name = "btnHGroupMatrix";
-            btnHGroupMatrix.Size = new Size(278, 34);
+            btnHGroupMatrix.Size = new Size(195, 20);
             btnHGroupMatrix.TabIndex = 8;
             btnHGroupMatrix.Text = "Генерация обычной группы";
             btnHGroupMatrix.UseVisualStyleBackColor = true;
@@ -153,17 +160,19 @@
             // lblVGroup
             // 
             lblVGroup.AutoSize = true;
-            lblVGroup.Location = new Point(132, 443);
+            lblVGroup.Location = new Point(92, 266);
+            lblVGroup.Margin = new Padding(2, 0, 2, 0);
             lblVGroup.Name = "lblVGroup";
-            lblVGroup.Size = new Size(367, 25);
+            lblVGroup.Size = new Size(246, 15);
             lblVGroup.TabIndex = 9;
             lblVGroup.Text = "Генерация горизонтальной группы матриц";
             // 
             // btnHGroupSparseMatrix
             // 
-            btnHGroupSparseMatrix.Location = new Point(311, 475);
+            btnHGroupSparseMatrix.Location = new Point(218, 285);
+            btnHGroupSparseMatrix.Margin = new Padding(2, 2, 2, 2);
             btnHGroupSparseMatrix.Name = "btnHGroupSparseMatrix";
-            btnHGroupSparseMatrix.Size = new Size(311, 34);
+            btnHGroupSparseMatrix.Size = new Size(218, 20);
             btnHGroupSparseMatrix.TabIndex = 10;
             btnHGroupSparseMatrix.Text = "Генерация разреженной группы";
             btnHGroupSparseMatrix.UseVisualStyleBackColor = true;
@@ -172,17 +181,19 @@
             // lblHGroup
             // 
             lblHGroup.AutoSize = true;
-            lblHGroup.Location = new Point(132, 522);
+            lblHGroup.Location = new Point(92, 313);
+            lblHGroup.Margin = new Padding(2, 0, 2, 0);
             lblHGroup.Name = "lblHGroup";
-            lblHGroup.Size = new Size(366, 25);
+            lblHGroup.Size = new Size(245, 15);
             lblHGroup.TabIndex = 11;
             lblHGroup.Text = "Генеризация вертикальной группы матриц";
             // 
             // btnVGroupMatrix
             // 
-            btnVGroupMatrix.Location = new Point(19, 558);
+            btnVGroupMatrix.Location = new Point(13, 335);
+            btnVGroupMatrix.Margin = new Padding(2, 2, 2, 2);
             btnVGroupMatrix.Name = "btnVGroupMatrix";
-            btnVGroupMatrix.Size = new Size(274, 34);
+            btnVGroupMatrix.Size = new Size(192, 20);
             btnVGroupMatrix.TabIndex = 12;
             btnVGroupMatrix.Text = "Генерация обычной группы";
             btnVGroupMatrix.UseVisualStyleBackColor = true;
@@ -190,9 +201,10 @@
             // 
             // btnVGroupSparseMatrix
             // 
-            btnVGroupSparseMatrix.Location = new Point(313, 558);
+            btnVGroupSparseMatrix.Location = new Point(219, 335);
+            btnVGroupSparseMatrix.Margin = new Padding(2, 2, 2, 2);
             btnVGroupSparseMatrix.Name = "btnVGroupSparseMatrix";
-            btnVGroupSparseMatrix.Size = new Size(309, 34);
+            btnVGroupSparseMatrix.Size = new Size(216, 20);
             btnVGroupSparseMatrix.TabIndex = 13;
             btnVGroupSparseMatrix.Text = "Генерация разреженной группы";
             btnVGroupSparseMatrix.UseVisualStyleBackColor = true;
@@ -201,27 +213,30 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(16, 598);
+            label1.Location = new Point(11, 359);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(614, 25);
+            label1.Size = new Size(437, 15);
             label1.TabIndex = 14;
             label1.Text = "______________________________________________________________________________________";
             // 
             // lblChange
             // 
             lblChange.AutoSize = true;
-            lblChange.Location = new Point(193, 372);
+            lblChange.Location = new Point(135, 223);
+            lblChange.Margin = new Padding(2, 0, 2, 0);
             lblChange.Name = "lblChange";
-            lblChange.Size = new Size(249, 25);
+            lblChange.Size = new Size(167, 15);
             lblChange.TabIndex = 15;
             lblChange.Text = "Механизм отмены операций";
             // 
             // btnChange
             // 
             btnChange.Enabled = false;
-            btnChange.Location = new Point(19, 407);
+            btnChange.Location = new Point(13, 244);
+            btnChange.Margin = new Padding(2, 2, 2, 2);
             btnChange.Name = "btnChange";
-            btnChange.Size = new Size(274, 34);
+            btnChange.Size = new Size(192, 20);
             btnChange.TabIndex = 16;
             btnChange.Text = "Изменить";
             btnChange.UseVisualStyleBackColor = true;
@@ -230,9 +245,10 @@
             // btnCancel
             // 
             btnCancel.Enabled = false;
-            btnCancel.Location = new Point(313, 406);
+            btnCancel.Location = new Point(219, 244);
+            btnCancel.Margin = new Padding(2, 2, 2, 2);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(309, 34);
+            btnCancel.Size = new Size(216, 20);
             btnCancel.TabIndex = 17;
             btnCancel.Text = "Отменить";
             btnCancel.UseVisualStyleBackColor = true;
@@ -240,9 +256,9 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(860, 716);
+            ClientSize = new Size(602, 430);
             Controls.Add(btnCancel);
             Controls.Add(btnChange);
             Controls.Add(lblChange);
@@ -260,6 +276,7 @@
             Controls.Add(checkBoxEdge);
             Controls.Add(btnSparseMatrix);
             Controls.Add(btnMatrix);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
