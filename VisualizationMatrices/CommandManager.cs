@@ -38,8 +38,6 @@ namespace VisualizationMatrices
                 var command = commands.Pop();
                 command.Undo();
             }
-
-
         }
 
         private void UpdateStack()

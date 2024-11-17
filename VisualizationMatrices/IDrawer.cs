@@ -12,7 +12,7 @@ namespace VisualizationMatrices
         void BeginDrawRow(IMatrix matrix, int row);
         void BeginDrawItem(IMatrix matrix, int row, int col);
         void DrawItemBorder(IMatrix matrix, int row, int col);
-        void DrawItem(int value, int row, int col, int countColumns);
+        void DrawItem(int value, int row, int col);
         void EndDrawItem(IMatrix matrix, int row, int col);
         void EndDrawRow(IMatrix matrix, int row);
         void DrawBorder(IMatrix matrix);

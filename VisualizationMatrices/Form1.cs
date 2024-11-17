@@ -12,9 +12,9 @@ namespace VisualizationMatrices
         GraphicsDrawer graphicsDrawer;
         IMatrix matrix, matrix1, matrix2, matrix3, matrix4, matrix5, matrix6, matrix7;
         HGroupMatrices ghMatrix1, ghMatrix2;
-        VGroupMatricesOld ghMatrix3;
+        VGroupMatrices ghMatrix3;
         DrawMatrix drawMatrix = new DrawMatrix();
-        //DrawSparseMatix sparseMatrix = new DrawSparseMatix();
+        DrawSparseMatix sparseMatrix = new DrawSparseMatix();
         RenumberingDecorator matrix_dec;
         bool is_matrix = false;
         bool is_v_group = false;
@@ -53,7 +53,7 @@ namespace VisualizationMatrices
             //ghMatrix2 = new HGroupMatrices(matrix5, matrix6);
             ghMatrix1.AddMatrix(matrix4);
 
-            ghMatrix3 = new VGroupMatricesOld(ghMatrix1);
+            ghMatrix3 = new VGroupMatrices(ghMatrix1);
             ghMatrix3.AddMatrix(matrix7);
 
             drawer = new ConsoleDrawer(textBox);
@@ -80,8 +80,8 @@ namespace VisualizationMatrices
             ChangeEnabled(true);
             matrix = new SparseMatrix(3, 3);
             InitMatrix.FillMatrix(matrix, 5, 10);
-            drawMatrix.Draw(matrix, drawer);
-            drawMatrix.Draw(matrix, graphicsDrawer);
+            sparseMatrix.Draw(matrix, drawer);
+            sparseMatrix.Draw(matrix, graphicsDrawer);
 
             is_matrix = true;
             is_h_group = false;
@@ -188,8 +188,8 @@ namespace VisualizationMatrices
         private void btnHGroupSparseMatrix_Click(object sender, EventArgs e)
         {
             ChangeEnabled(true);
-            drawMatrix.Draw(ghMatrix1, drawer);
-            drawMatrix.Draw(ghMatrix1, graphicsDrawer);
+            sparseMatrix.Draw(ghMatrix1, drawer);
+            sparseMatrix.Draw(ghMatrix1, graphicsDrawer);
             is_h_group = true;
             is_v_group = false;
             is_matrix = true;
@@ -208,8 +208,8 @@ namespace VisualizationMatrices
         private void btnVGroupSparseMatrix_Click(object sender, EventArgs e)
         {
             ChangeEnabled(true);
-            drawMatrix.Draw(ghMatrix3, drawer);
-            drawMatrix.Draw(ghMatrix3, graphicsDrawer);
+            sparseMatrix.Draw(ghMatrix3, drawer);
+            sparseMatrix.Draw(ghMatrix3, graphicsDrawer);
             is_h_group = false;
             is_v_group = true;
             is_matrix = true;
@@ -268,11 +268,11 @@ namespace VisualizationMatrices
             }
             else
             {
-                drawMatrix.Draw(matrix, drawer);
-                drawMatrix.Draw(matrix, graphicsDrawer);
+                sparseMatrix.Draw(matrix, drawer);
+                sparseMatrix.Draw(matrix, graphicsDrawer);
             }
         }
 
-        
+
     }
 }

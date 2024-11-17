@@ -82,10 +82,9 @@ namespace VisualizationMatrices
             return false;
         }
 
-        public void Draw(int value, int row, int col, IDrawer drawer, int countColumns)
+        public void Draw(int value, int row, int col, IDrawer drawer)
         {
-            //TODO: переделать
-            matrix.Draw(value, row, col, drawer, countColumns);
+            drawer.DrawItem(value, row, col);
         }
     }
 }

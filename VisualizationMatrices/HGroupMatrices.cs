@@ -60,7 +60,6 @@ namespace VisualizationMatrices
 
         public virtual int GetItem(int row, int column)
         {
-            
             var currentObjects = GetMatrixColumn(row, column);
             int currentColumn = currentObjects.Item1;
             IMatrix currentMatrix = matrices[currentObjects.Item2];
@@ -89,11 +88,15 @@ namespace VisualizationMatrices
             return true;
         }
 
-        protected (int, int) GetMatrixColumn(int row, int column)
+        private (int, int) GetMatrixColumn(int row, int column)
         {
             int currentColumn = 0;
             int previousColumn = 0;
             int index = 0;
+
+            //как сделать чтобы CountColumns обращался не к переопределенному свойству
+            //if (row < 0 || column < 0 || row >= CountRows || column >= CountColumns)
+            //    throw new IndexOutOfRangeException("Index out of range");
 
             if (row < 0 || column < 0)
                 throw new IndexOutOfRangeException("Index out of range");
@@ -112,22 +115,18 @@ namespace VisualizationMatrices
             return (currentColumn, index);
         }
 
-        public virtual void Draw(int value, int row, int col, IDrawer drawer, int countColumns)
+        public virtual void Draw(int value, int row, int col, IDrawer drawer)
         {
             var currentObjects = GetMatrixColumn(row, col);
             int currentColumn = currentObjects.Item1;
             IMatrix currentMatrix = matrices[currentObjects.Item2];
-
+            
             if (row >= currentMatrix.CountRows)
-            {
-                drawer.DrawItem(0, row, col, countColumns);
-                //currentMatrix.Draw(value, row, currentColumn, drawer, countColumns);
-            }
+                drawer.DrawItem(0, row, col);
             else
             {
-                currentMatrix.Draw(value, row, col, drawer, countColumns);
+                currentMatrix.Draw(value, row, currentColumn, drawer);
             }
-            
             
         }
     }

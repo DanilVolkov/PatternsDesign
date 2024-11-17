@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +15,7 @@ namespace VisualizationMatrices
         protected int lineCount;
         List<string> borders;
         Color color = Color.White;
+        int currentRow = 0;
 
         public GraphicsDrawer(DataGridView dataGridView)
         {
@@ -30,6 +30,7 @@ namespace VisualizationMatrices
             dataGridView.Rows.Clear();
             dataGridView.RowCount = matrix.CountRows;
             dataGridView.ColumnCount = matrix.CountColumns;
+            currentRow = 0;
         }
 
         public void BeginDrawItem(IMatrix matrix, int row, int col) { }
@@ -40,18 +41,16 @@ namespace VisualizationMatrices
 
         public virtual void DrawBorder(IMatrix matrix) { }
 
-        public void DrawItem(int value, int row, int col, int countColumns)
+        public void DrawItem(int value, int row, int col)
         {
-            Console.WriteLine($"row: {row}, col: {col}");
             for (int i = 0; i < dataGridView.ColumnCount; i++)
             {
-                if (dataGridView[i, row].Value is null)
+                if (dataGridView[i, currentRow].Value is null)
                 {
-                    dataGridView[i, row].Value = value;
+                    dataGridView[i, currentRow].Value = value;
                     break;
                 }
             }
-
         }
 
         public void DrawItemBorder(IMatrix matrix, int row, int col) { }
@@ -84,7 +83,10 @@ namespace VisualizationMatrices
 
         public void EndDrawItem(IMatrix matrix, int row, int col) { }
 
-        public void EndDrawRow(IMatrix matrix, int row) { }
+        public void EndDrawRow(IMatrix matrix, int row)
+        {
+            currentRow++;
+        }
 
         private void DrawBord(DataGridViewCellPaintingEventArgs e, Pen p, int x)
         {
@@ -137,7 +139,7 @@ namespace VisualizationMatrices
                     }
                     e.PaintContent(e.ClipBounds);
                 }
-
+                
             }
         }
 

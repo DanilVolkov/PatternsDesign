@@ -30,18 +30,9 @@ namespace VisualizationMatrices
             }
         }
 
-        public void DrawItem(int value, int row, int col, int countColumns)
+        public void DrawItem(int value, int row, int col)
         {
-            //Console.WriteLine($"row: {row}, col: {col}, value: {value}");
             textBox.Paste(value.ToString() + " ");
-            //if (col == countColumns - 1)
-            //{
-            //    textBox.Paste(value.ToString());
-            //}
-            //else
-            //{
-            //    textBox.Paste(value.ToString() + " ");
-            //}
         }
 
         public void DrawItemBorder(IMatrix matrix, int row, int col) { }

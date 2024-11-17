@@ -10,11 +10,11 @@ namespace VisualizationMatrices
     {
         public override void Undo() { }
 
+        protected override void DoExecute() { }
+
         public override ICommand Copy()
         {
-           return new InitializeApplicationCommand();
+            return new InitializeApplicationCommand();
         }
-
-        protected override void DoExecute() { }
     }
 }

@@ -18,6 +18,5 @@ namespace VisualizationMatrices
         protected abstract void DoExecute();
 
         public abstract ICommand Copy();
-
     }
 }

@@ -17,7 +17,6 @@ namespace VisualizationMatrices
             this.column = column;
             this.newValue = newValue;
         }
-
         private WriteValueToMatrixCommand(IMatrix matrix, int row, int column, int newValue, int prevValue)
         {
             this.matrix = matrix;
@@ -27,22 +26,20 @@ namespace VisualizationMatrices
             this.prevValue = prevValue;
         }
 
-
         public override void Undo()
         {
             matrix.SetItem(row, column, prevValue);
-        }
-
-        public override ICommand Copy()
-        {
-            return new WriteValueToMatrixCommand(matrix, row, column, newValue, prevValue);
         }
 
         protected override void DoExecute()
         {
             prevValue = matrix.GetItem(row, column);
             matrix.SetItem(row, column, newValue);
-            
+        }
+
+        public override ICommand Copy()
+        {
+            return new WriteValueToMatrixCommand(matrix, row, column, newValue, prevValue);
         }
     }
 }
