@@ -60,6 +60,7 @@ namespace VisualizationMatrices
 
         public virtual int GetItem(int row, int column)
         {
+            
             var currentObjects = GetMatrixColumn(row, column);
             int currentColumn = currentObjects.Item1;
             IMatrix currentMatrix = matrices[currentObjects.Item2];
@@ -88,15 +89,11 @@ namespace VisualizationMatrices
             return true;
         }
 
-        private (int, int) GetMatrixColumn(int row, int column)
+        protected (int, int) GetMatrixColumn(int row, int column)
         {
             int currentColumn = 0;
             int previousColumn = 0;
             int index = 0;
-
-            //как сделать чтобы CountColumns обращался не к переопределенному свойству
-            //if (row < 0 || column < 0 || row >= CountRows || column >= CountColumns)
-            //    throw new IndexOutOfRangeException("Index out of range");
 
             if (row < 0 || column < 0)
                 throw new IndexOutOfRangeException("Index out of range");
@@ -123,8 +120,8 @@ namespace VisualizationMatrices
 
             if (row >= currentMatrix.CountRows)
             {
-                //drawer.DrawItem(0, row, col, countColumns);
-                currentMatrix.Draw(value, row, col, drawer, countColumns);
+                drawer.DrawItem(0, row, col, countColumns);
+                //currentMatrix.Draw(value, row, currentColumn, drawer, countColumns);
             }
             else
             {

@@ -27,8 +27,8 @@ namespace VisualizationMatrices
                 {
                     //if (!Condition(matrix, row, col)) continue;
                     //Console.WriteLine(col);
-                    Console.WriteLine($"ADrawMatrix: row: {row}, col: {col}, value: {matrix.GetItem(row, col)}");
-                    // декоратор применяется 2 раза
+                    //Console.WriteLine($"ADrawMatrix: row: {row}, col: {col}, value: {matrix.GetItem(row, col)}");
+                    
                     matrix.Draw(matrix.GetItem(row, col), row, col, drawer, matrix.CountColumns);
                     
                     

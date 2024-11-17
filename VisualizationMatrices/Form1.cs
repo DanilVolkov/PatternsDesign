@@ -12,7 +12,7 @@ namespace VisualizationMatrices
         GraphicsDrawer graphicsDrawer;
         IMatrix matrix, matrix1, matrix2, matrix3, matrix4, matrix5, matrix6, matrix7;
         HGroupMatrices ghMatrix1, ghMatrix2;
-        VGroupMatrices ghMatrix3;
+        VGroupMatricesOld ghMatrix3;
         DrawMatrix drawMatrix = new DrawMatrix();
         //DrawSparseMatix sparseMatrix = new DrawSparseMatix();
         RenumberingDecorator matrix_dec;
@@ -53,8 +53,8 @@ namespace VisualizationMatrices
             //ghMatrix2 = new HGroupMatrices(matrix5, matrix6);
             ghMatrix1.AddMatrix(matrix4);
 
-            ghMatrix3 = new VGroupMatrices(ghMatrix1);
-            //ghMatrix3.AddMatrix(matrix7);
+            ghMatrix3 = new VGroupMatricesOld(ghMatrix1);
+            ghMatrix3.AddMatrix(matrix7);
 
             drawer = new ConsoleDrawer(textBox);
             graphicsDrawer = new GraphicsDrawer(dataGridView);

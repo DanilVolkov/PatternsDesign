@@ -107,7 +107,7 @@ namespace VisualizationMatrices
         {
             try
             {
-                base.Draw(value, transpose[row][col][0], transpose[row][col][1], drawer, CountColumns);
+                base.Draw(value, transpose[row][col][0], transpose[row][col][1], drawer, countColumns);
             }
             catch
             {

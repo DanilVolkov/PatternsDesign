@@ -8,9 +8,9 @@ namespace VisualizationMatrices
 {
     class VGroupMatrices : HGroupMatrices
     {
-        public VGroupMatrices(HGroupMatrices group) : base(group)
+        public VGroupMatrices(IMatrix group) : base(group)
         {
-
+            
         }
 
         public override int CountRows
@@ -39,9 +39,9 @@ namespace VisualizationMatrices
             base.SetItem(column, row, value);
         }
 
-        //public override void Draw(int value, int row, int col, IDrawer drawer, int countColumns)
-        //{
-        //    base.Draw(value, row, col, drawer, countColumns);
-        //}
+        public override void Draw(int value, int col, int row, IDrawer drawer, int countColumns)
+        {
+            base.Draw(value, col, row, drawer, countColumns);
+        }
     }
 }
